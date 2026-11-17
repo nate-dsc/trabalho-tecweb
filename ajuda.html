@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ajuda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar__top">
+        <div class="sidebar__logo">
+          <img src="assets/img/logo.png" alt="Logo" width="190" height="95">
+        </div>
+
+        <nav class="nav">
+          <div class="nav__section">Navegação</div>
+          <a class="nav__item" href="index.html">
+            <span class="nav__icon">
+              <img class="nav__icon-dashboard" src="assets/icons/dashboard.svg" alt="" width="15.5" height="16.2504">
+            </span>
+            Dashboard
+          </a>
+          <a class="nav__item" href="imoveis.html">
+            <span class="nav__icon">
+              <img class="nav__icon-imoveis" src="assets/icons/imoveis.svg" alt="" width="17" height="15.5">
+            </span>
+            Imóveis
+          </a>
+          <a class="nav__item" href="inquilinos.html">
+            <span class="nav__icon"><img src="assets/icons/inquilinos.svg" alt="" width="18" height="18"></span>
+            Inquilinos
+          </a>
+          <a class="nav__item" href="financeiro.html">
+            <span class="nav__icon"><img src="assets/icons/financeiro.svg" alt="" width="18" height="18"></span>
+            Financeiro
+          </a>
+          <a class="nav__item" href="documentos.html">
+            <span class="nav__icon"><img src="assets/icons/documentos.svg" alt="" width="18" height="18"></span>
+            Documentos
+          </a>
+          <a class="nav__item is-active is-active--neutral" href="ajuda.html" aria-current="page">
+            <span class="nav__icon"><img src="assets/icons/ajuda.svg" alt="" width="18" height="18"></span>
+            Ajuda
+          </a>
+
+          <div class="nav__section nav__section--spaced">Controles</div>
+          <a class="nav__item" href="configuracoes.html">
+            <span class="nav__icon"><img src="assets/icons/configuracoes.svg" alt="" width="18" height="18"></span>
+            Configurações
+          </a>
+          <a class="nav__item" href="login.html">
+            <span class="nav__icon"><img src="assets/icons/sair.svg" alt="" width="18" height="18"></span>
+            Sair
+          </a>
+        </nav>
+      </div>
+      <div class="sidebar__footer"></div>
+    </aside>
+
+    <!-- Principal -->
+    <main class="main">
+      <header class="page-title page-title--plain">
+        <h1>Ajuda</h1>
+      </header>
+
+      <hr class="separator separator--strong">
+
+      <div class="help-page">
+        <div class="help-hero">
+          <h2>Como podemos ajudar?</h2>
+        </div>
+
+        <hr class="separator">
+
+        <section class="help-section" aria-label="Categorias de ajuda">
+          <div class="help-grid">
+            <button class="help-card" type="button" data-modal="modal-primeiros-passos" aria-haspopup="dialog">
+              <span class="help-card__icon"><img src="assets/icons/book-open.svg" alt="" width="20" height="20"></span>
+              <span class="help-card__title">Primeiros Passos</span>
+            </button>
+            <button class="help-card" type="button" data-modal="modal-imoveis" aria-haspopup="dialog">
+              <span class="help-card__icon"><img src="assets/icons/building.svg" alt="" width="20" height="20"></span>
+              <span class="help-card__title">Gerenciar Imóveis</span>
+            </button>
+            <button class="help-card" type="button" data-modal="modal-inquilinos" aria-haspopup="dialog">
+              <span class="help-card__icon"><img src="assets/icons/users.svg" alt="" width="20" height="20"></span>
+              <span class="help-card__title">Gerenciar Inquilinos</span>
+            </button>
+            <button class="help-card" type="button" data-modal="modal-documentos" aria-haspopup="dialog">
+              <span class="help-card__icon"><img src="assets/icons/file-text.svg" alt="" width="20" height="20"></span>
+              <span class="help-card__title">Documentos</span>
+            </button>
+            <button class="help-card" type="button" data-modal="modal-financeiro" aria-haspopup="dialog">
+              <span class="help-card__icon"><img src="assets/icons/bar-chart.svg" alt="" width="20" height="20"></span>
+              <span class="help-card__title">Financeiro</span>
+            </button>
+            <button class="help-card" type="button" data-modal="modal-configuracoes" aria-haspopup="dialog">
+              <span class="help-card__icon"><img src="assets/icons/settings.svg" alt="" width="20" height="20"></span>
+              <span class="help-card__title">Configurações</span>
+            </button>
+          </div>
+        </section>
+
+        <hr class="separator">
+
+        <section class="help-section faq">
+          <h2 class="faq__title">Perguntas frequentes</h2>
+          <div class="faq__list">
+            <details class="faq__item">
+              <summary class="faq__question">
+                <span>Como adicionar um novo imóvel?</span>
+                <img class="faq__chevron" src="assets/icons/chevron-right.svg" alt="" width="16" height="16">
+              </summary>
+              <div class="faq__answer">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </details>
+            <details class="faq__item">
+              <summary class="faq__question">
+                <span>Como gerar um contrato?</span>
+                <img class="faq__chevron" src="assets/icons/chevron-right.svg" alt="" width="16" height="16">
+              </summary>
+              <div class="faq__answer">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </details>
+            <details class="faq__item">
+              <summary class="faq__question">
+                <span>Como registrar um pagamento?</span>
+                <img class="faq__chevron" src="assets/icons/chevron-right.svg" alt="" width="16" height="16">
+              </summary>
+              <div class="faq__answer">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </details>
+            <details class="faq__item">
+              <summary class="faq__question">
+                <span>Como exportar relatórios?</span>
+                <img class="faq__chevron" src="assets/icons/chevron-right.svg" alt="" width="16" height="16">
+              </summary>
+              <div class="faq__answer">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <dialog class="modal" id="modal-primeiros-passos" aria-labelledby="modal-primeiros-passos-title">
+    <div class="modal__header">
+      <span class="help-card__icon"><img src="assets/icons/book-open.svg" alt="" width="20" height="20"></span>
+      <h2 class="modal__title" id="modal-primeiros-passos-title">Primeiros Passos</h2>
+      <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
+    </div>
+    <div class="modal__body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <ol>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              <li>Vestibulum id ligula porta felis euismod semper.</li>
+              <li>Cras mattis consectetur purus sit amet fermentum.</li>
+      </ol>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="modal__footer">
+      <button class="btn-primary" type="button" data-close>Entendi</button>
+    </div>
+  </dialog>
+  <dialog class="modal" id="modal-imoveis" aria-labelledby="modal-imoveis-title">
+    <div class="modal__header">
+      <span class="help-card__icon"><img src="assets/icons/building.svg" alt="" width="20" height="20"></span>
+      <h2 class="modal__title" id="modal-imoveis-title">Gerenciar Imóveis</h2>
+      <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
+    </div>
+    <div class="modal__body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <ol>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              <li>Vestibulum id ligula porta felis euismod semper.</li>
+              <li>Cras mattis consectetur purus sit amet fermentum.</li>
+      </ol>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="modal__footer">
+      <button class="btn-primary" type="button" data-close>Entendi</button>
+    </div>
+  </dialog>
+  <dialog class="modal" id="modal-inquilinos" aria-labelledby="modal-inquilinos-title">
+    <div class="modal__header">
+      <span class="help-card__icon"><img src="assets/icons/users.svg" alt="" width="20" height="20"></span>
+      <h2 class="modal__title" id="modal-inquilinos-title">Gerenciar Inquilinos</h2>
+      <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
+    </div>
+    <div class="modal__body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <ol>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              <li>Vestibulum id ligula porta felis euismod semper.</li>
+              <li>Cras mattis consectetur purus sit amet fermentum.</li>
+      </ol>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="modal__footer">
+      <button class="btn-primary" type="button" data-close>Entendi</button>
+    </div>
+  </dialog>
+  <dialog class="modal" id="modal-documentos" aria-labelledby="modal-documentos-title">
+    <div class="modal__header">
+      <span class="help-card__icon"><img src="assets/icons/file-text.svg" alt="" width="20" height="20"></span>
+      <h2 class="modal__title" id="modal-documentos-title">Documentos</h2>
+      <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
+    </div>
+    <div class="modal__body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <ol>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              <li>Vestibulum id ligula porta felis euismod semper.</li>
+              <li>Cras mattis consectetur purus sit amet fermentum.</li>
+      </ol>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="modal__footer">
+      <button class="btn-primary" type="button" data-close>Entendi</button>
+    </div>
+  </dialog>
+  <dialog class="modal" id="modal-financeiro" aria-labelledby="modal-financeiro-title">
+    <div class="modal__header">
+      <span class="help-card__icon"><img src="assets/icons/bar-chart.svg" alt="" width="20" height="20"></span>
+      <h2 class="modal__title" id="modal-financeiro-title">Financeiro</h2>
+      <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
+    </div>
+    <div class="modal__body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <ol>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              <li>Vestibulum id ligula porta felis euismod semper.</li>
+              <li>Cras mattis consectetur purus sit amet fermentum.</li>
+      </ol>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="modal__footer">
+      <button class="btn-primary" type="button" data-close>Entendi</button>
+    </div>
+  </dialog>
+  <dialog class="modal" id="modal-configuracoes" aria-labelledby="modal-configuracoes-title">
+    <div class="modal__header">
+      <span class="help-card__icon"><img src="assets/icons/settings.svg" alt="" width="20" height="20"></span>
+      <h2 class="modal__title" id="modal-configuracoes-title">Configurações</h2>
+      <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
+    </div>
+    <div class="modal__body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <ol>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              <li>Vestibulum id ligula porta felis euismod semper.</li>
+              <li>Cras mattis consectetur purus sit amet fermentum.</li>
+      </ol>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="modal__footer">
+      <button class="btn-primary" type="button" data-close>Entendi</button>
+    </div>
+  </dialog>
+
+  <script src="assets/js/modal.js"></script>
+</body>
+</html>

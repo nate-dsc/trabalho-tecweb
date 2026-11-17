@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-body">
+  <main class="login">
+    <div class="login__logo">
+      <img src="assets/img/logo.png" alt="Logo" width="280" height="160">
+    </div>
+
+    <div class="login__welcome">
+      <h1>Bem-vindo ao Gestor</h1>
+      <p>Acesse sua conta</p>
+    </div>
+
+    <!--
+      Sem validação: qualquer valor (inclusive vazio) entra no Dashboard.
+      Os campos não têm "name", então nada do que é digitado vai para a URL.
+    -->
+    <form class="login__form" id="login-form" action="index.html" method="get">
+      <div class="login__fields">
+        <label class="field">
+          <span class="field__label">Login</span>
+          <input class="field__input" type="text" placeholder="Digite seu e-mail ou usuário" autocomplete="username" autocapitalize="none" spellcheck="false">
+        </label>
+        <label class="field">
+          <span class="field__label">Senha</span>
+          <input class="field__input" type="password" placeholder="Digite sua senha" autocomplete="current-password">
+        </label>
+      </div>
+
+      <div class="login__actions">
+        <button class="login__submit" type="submit">Entrar</button>
+        <div class="login__links">
+          <button class="login__link" type="button" data-modal="modal-senha" aria-haspopup="dialog">Esqueceu a senha?</button>
+          <a class="login__link" href="#">Criar conta</a>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <!-- Modal: esqueceu a senha -->
+  <dialog class="modal" id="modal-senha" aria-labelledby="modal-senha-title">
+    <form class="forgot" id="forgot-form" method="dialog">
+      <div class="modal__header">
+        <h2 class="modal__title" id="modal-senha-title">Recuperar senha</h2>
+        <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
+      </div>
+
+      <div class="modal__body" data-step="form">
+        <p>Informe o e-mail da sua conta e enviaremos um link para você criar uma nova senha.</p>
+        <label class="field">
+          <span class="field__label">E-mail</span>
+          <input class="field__input" type="email" id="forgot-email" placeholder="Digite seu e-mail" autocomplete="email" required autofocus>
+        </label>
+      </div>
+
+      <div class="modal__body" data-step="done" hidden>
+        <p class="forgot__done" role="status">Pronto! Se existir uma conta com esse e-mail, você vai receber o link em alguns minutos. Confira também a caixa de spam.</p>
+      </div>
+
+      <div class="modal__footer" data-step="form">
+        <button class="btn-secondary" type="button" data-close>Cancelar</button>
+        <button class="btn-primary" type="submit">Enviar link</button>
+      </div>
+      <div class="modal__footer" data-step="done" hidden>
+        <button class="btn-primary" type="button" data-close>Voltar ao login</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/login.js"></script>
+</body>
+</html>
