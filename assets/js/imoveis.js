@@ -22,7 +22,7 @@
       var month = card.querySelector('.bill__header h4').textContent.trim();
       var apt = card.querySelector('.bill__header p').textContent.trim();
       var total = card.querySelector('.bill__total strong').textContent.trim();
-      var late = !!card.querySelector('.status-badge--late');
+      var late = !!card.querySelector('.chip--late');
       var tenant = TENANTS[apt];
       current = tenant;
 
@@ -31,7 +31,7 @@
       $('conta-itens').innerHTML = card.querySelector('.bill__list').innerHTML;
       $('conta-total').textContent = total;
       var status = $('conta-status');
-      status.className = 'status-badge ' + (late ? 'status-badge--late' : 'status-badge--paid');
+      status.className = 'chip ' + (late ? 'chip--late' : 'chip--paid');
       status.textContent = late ? 'Atrasado' : 'Pago';
 
       form.hidden = !late;

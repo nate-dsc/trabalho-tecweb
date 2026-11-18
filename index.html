@@ -149,8 +149,8 @@
           <div class="docs">
             <article class="doc">
               <div class="doc__preview">
+                <span class="chip chip--recent">Mais recente</span>
                 <span class="doc__file"><img src="assets/icons/file-text.svg" alt="" width="20" height="20"></span>
-                <span class="badge badge--orange">Mais recente</span>
               </div>
               <div class="doc__info">
                 <h3><a class="stretched-link" href="assets/docs/contrato_alexey.pdf" target="_blank" rel="noopener">Contrato de Aluguel</a></h3>
@@ -160,8 +160,8 @@
             </article>
             <article class="doc">
               <div class="doc__preview">
+                <span class="chip chip--type">Comprovante</span>
                 <span class="doc__file"><img src="assets/icons/file-text.svg" alt="" width="20" height="20"></span>
-                <span class="badge badge--green">Comprovante</span>
               </div>
               <div class="doc__info">
                 <h3><a class="stretched-link" href="assets/docs/comprovante_caucao.pdf" target="_blank" rel="noopener">Depósito do Caução</a></h3>
@@ -179,58 +179,46 @@
             <a class="link" href="inquilinos.html">Ver todos</a>
           </div>
           <div class="tenants">
-            <article class="tenant">
-              <div class="tenant__photo">
+            <article class="tenant-mini">
+              <div class="tenant-mini__photo">
                 <img class="tenant__img" src="assets/img/inquilino-1.png" alt="">
-                <span class="pill pill--red">Atrasado</span>
+                <span class="chip chip--late">Atrasado</span>
               </div>
-              <div class="tenant__data">
-                <h3>Alexey H.M.S.</h3>
-                <p>Prédio A, apartamento 1508</p>
-              </div>
+              <h3>Alexey H.M.S.</h3>
+              <p>Prédio A, apartamento 1508</p>
             </article>
-            <article class="tenant">
-              <div class="tenant__photo">
+            <article class="tenant-mini">
+              <div class="tenant-mini__photo">
                 <img class="tenant__img" src="assets/img/inquilino-2.png" alt="">
-                <span class="pill pill--orange">Pendente</span>
+                <span class="chip chip--pending">Pendente</span>
               </div>
-              <div class="tenant__data">
-                <h3>Gabriel Gabé</h3>
-                <p>Av. Champs-Élysées, 71</p>
-              </div>
+              <h3>Gabriel Gabé</h3>
+              <p>Av. Champs-Élysées, 71</p>
             </article>
-            <article class="tenant">
-              <div class="tenant__photo">
+            <article class="tenant-mini">
+              <div class="tenant-mini__photo">
                 <img class="tenant__img tenant__img--crop" src="assets/img/inquilino-3.png" alt="">
-                <span class="pill pill--orange">Pendente</span>
+                <span class="chip chip--pending">Pendente</span>
               </div>
-              <div class="tenant__data">
-                <h3>Joi de Armas</h3>
-                <p>Megaprédio H7, apartamento 7223</p>
-              </div>
+              <h3>Joi de Armas</h3>
+              <p>Megaprédio H7, apartamento 7223</p>
             </article>
-            <article class="tenant">
-              <div class="tenant__photo">
+            <article class="tenant-mini">
+              <div class="tenant-mini__photo">
                 <img class="tenant__img tenant__img--difference" src="assets/img/inquilino-1.png" alt="">
               </div>
-              <div class="tenant__data">
-                <h3>S.M.H. Yexela</h3>
-                <p>Prédio A, apartamento 1507</p>
-              </div>
+              <h3>S.M.H. Yexela</h3>
+              <p>Prédio A, apartamento 1507</p>
             </article>
-            <article class="tenant">
-              <div class="tenant__photo tenant__photo--empty"></div>
-              <div class="tenant__data">
-                <h3>Marina Lopes</h3>
-                <p>Av. Beira-Mar, 1500, apartamento 902</p>
-              </div>
+            <article class="tenant-mini">
+              <div class="tenant-mini__photo tenant-mini__photo--empty"></div>
+              <h3>Marina Lopes</h3>
+              <p>Av. Beira-Mar, 1500, apartamento 902</p>
             </article>
-            <article class="tenant">
-              <div class="tenant__photo tenant__photo--empty"></div>
-              <div class="tenant__data">
-                <h3>Rafael Nunes</h3>
-                <p>Rua Padre Ibiapina, 310</p>
-              </div>
+            <article class="tenant-mini">
+              <div class="tenant-mini__photo tenant-mini__photo--empty"></div>
+              <h3>Rafael Nunes</h3>
+              <p>Rua Padre Ibiapina, 310</p>
             </article>
           </div>
         </section>
@@ -280,5 +268,6 @@
   <script src="assets/js/demo.js"></script>
   <script src="assets/js/dashboard.js"></script>
   <script src="assets/js/nav.js"></script>
+  <script src="assets/js/edge-scroll.js"></script>
 </body>
 </html>

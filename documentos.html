@@ -78,7 +78,7 @@
       <div class="docs-page">
         <!-- Recentes -->
         <section class="docs-recent">
-          <h2 class="property__title">Recentes</h2>
+          <h2 class="property__title property__title--sticky">Recentes</h2>
           <div class="docs-recent__row">
             <article class="doc-featured">
               <div class="doc-featured__preview">
@@ -115,19 +115,29 @@
             </article>
 
             <div class="docs-recent__cards">
-              <article class="doc-mini">
-                <div class="doc-mini__thumb"></div>
-                <h3><a class="stretched-link" href="assets/docs/comprovante_caucao.pdf" target="_blank" rel="noopener">Depósito do caução</a></h3>
-                <p>27/05/2026</p>
-                <p>Av. Champs-Élysées, 71</p>
-                <p class="doc-mini__path" title="C:\Users\Jose\Documents\comprovante_caucao.pdf">C:\Users\Jose\Documents\comprovante_caucao.pdf</p>
+              <article class="doc">
+                <div class="doc__preview">
+                  <span class="chip chip--type">Comprovante</span>
+                  <span class="doc__file"><img src="assets/icons/file-text.svg" alt="" width="20" height="20"></span>
+                </div>
+                <div class="doc__info">
+                  <h3><a class="stretched-link" href="assets/docs/comprovante_caucao.pdf" target="_blank" rel="noopener">Depósito do caução</a></h3>
+                  <p>27/05/2026</p>
+                  <p>Av. Champs-Élysées, 71</p>
+                  <p class="doc__path" title="C:\Users\Jose\Documents\comprovante_caucao.pdf">C:\Users\Jose\Documents\comprovante_caucao.pdf</p>
+                </div>
               </article>
-              <article class="doc-mini">
-                <div class="doc-mini__thumb"></div>
-                <h3><a class="stretched-link" href="assets/docs/vistoria_1508.pdf" target="_blank" rel="noopener">Laudo de vistoria</a></h3>
-                <p>26/05/2026</p>
-                <p>Prédio A, apartamento 1508</p>
-                <p class="doc-mini__path" title="C:\Users\Jose\Documents\vistoria_1508.pdf">C:\Users\Jose\Documents\vistoria_1508.pdf</p>
+              <article class="doc">
+                <div class="doc__preview">
+                  <span class="chip chip--type">Laudo</span>
+                  <span class="doc__file"><img src="assets/icons/file-text.svg" alt="" width="20" height="20"></span>
+                </div>
+                <div class="doc__info">
+                  <h3><a class="stretched-link" href="assets/docs/vistoria_1508.pdf" target="_blank" rel="noopener">Laudo de vistoria</a></h3>
+                  <p>26/05/2026</p>
+                  <p>Prédio A, apartamento 1508</p>
+                  <p class="doc__path" title="C:\Users\Jose\Documents\vistoria_1508.pdf">C:\Users\Jose\Documents\vistoria_1508.pdf</p>
+                </div>
               </article>
             </div>
           </div>
@@ -135,7 +145,7 @@
 
         <!-- Todos os documentos -->
         <section class="docs-all">
-          <h2 class="property__title">Todos os documentos</h2>
+          <h2 class="property__title property__title--sticky">Todos os documentos</h2>
           <hr class="docs-all__separator">
 
           <div class="docs-toolbar">
@@ -230,6 +240,8 @@
     </main>
   </div>
   <script src="assets/js/documentos.js"></script>
+  <script src="assets/js/sticky-sections.js"></script>
   <script src="assets/js/nav.js"></script>
+  <script src="assets/js/edge-scroll.js"></script>
 </body>
 </html>

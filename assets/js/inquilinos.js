@@ -17,8 +17,8 @@
       var phone = card.querySelector('.tenant-card__phone').textContent.trim();
       var rent = card.querySelector('.tenant-card__row--rent strong').textContent.trim();
       var due = card.querySelectorAll('.tenant-card__row strong')[1].textContent.trim();
-      var tag = card.querySelector('.tag');
-      var paid = tag.classList.contains('tag--paid');
+      var tag = card.querySelector('.chip');
+      var paid = tag.classList.contains('chip--paid');
 
       $('modal-inquilino-title').textContent = name;
       $('det-avatar').textContent = card.querySelector('.avatar').textContent.trim();
@@ -51,8 +51,8 @@
     var name = card.querySelector('h2').textContent.trim();
     var amount = Demo.formatMoney(Demo.parseMoney($('pagamento-valor').value));
     var date = $('pagamento-data').value.split('-').reverse().join('/');
-    var tag = card.querySelector('.tag');
-    tag.className = 'tag tag--paid';
+    var tag = card.querySelector('.chip');
+    tag.className = 'chip chip--paid';
     tag.textContent = 'Pago';
     dialog.close();
     Demo.toast('Pagamento de ' + amount + ' de ' + name + ' registrado em ' + date +

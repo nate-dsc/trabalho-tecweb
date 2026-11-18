@@ -524,7 +524,7 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   gap: 12px;
   overflow-x: auto;
-  scrollbar-width: thin;
+  scrollbar-width: none;
   /* espaço para a sombra dos cards não ser cortada pela rolagem */
   margin: -4px -8px -16px;
   padding: 4px 8px 16px;
@@ -532,7 +532,6 @@ a { color: inherit; text-decoration: none; }
 
 /* O link do título cobre o card inteiro: clicar em qualquer parte abre o PDF */
 .doc,
-.doc-mini,
 .doc-row { position: relative; }
 
 .stretched-link::after {
@@ -546,29 +545,59 @@ a { color: inherit; text-decoration: none; }
 .stretched-link:focus-visible { outline: none; }
 .stretched-link:focus-visible::after { outline: 2px solid var(--primary); outline-offset: -2px; }
 
+/*
+ * Cards das listas horizontais (inquilinos, contas mensais e documentos): todos com 200×300,
+ * cantos de 14px e sem encolher dentro da lista. O visual de cada tipo fica nas regras próprias.
+ */
+.tenant-mini,
+.bill,
 .doc {
   flex: 0 0 200px;
   width: 200px;
-  display: flex;
-  flex-direction: column;
   height: 300px;
-  border: 1px solid var(--border);
   border-radius: 14px;
-  background: var(--surface);
-  box-shadow: var(--shadow-card);
   overflow: hidden;
 }
 
+/*
+ * Etiqueta de situação ou tipo — mesmo formato e mesmas cores em qualquer card.
+ * Tons escolhidos para o texto branco ter contraste de pelo menos 4,5:1.
+ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.chip--late { background: #dc2626; }    /* Atrasado */
+.chip--pending { background: #c2410c; } /* Pendente */
+.chip--paid { background: #15803d; }    /* Pago */
+.chip--recent { background: #0066cc; }  /* Mais recente */
+.chip--type { background: #727272; }    /* tipo de documento: Comprovante, Laudo */
+
+/* Card de documento (Dashboard e Documentos): etiqueta e ícone na prévia; informações em cinza, sem sombra */
+.doc {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  background: #f2f2f2;
+}
+
+/* etiqueta no topo, a 8px da borda (como nos outros cards), com o ícone logo abaixo */
 .doc__preview {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 8px;
   height: 88px;
   flex-shrink: 0;
-  padding: 16px;
-  border-radius: 13px 13px 0 0;
+  padding: 7px 16px 8px; /* 7px + 1px de borda do card = etiqueta a 8px do topo */
   background: var(--surface-preview);
 }
 
@@ -582,18 +611,6 @@ a { color: inherit; text-decoration: none; }
   border-radius: 10px;
   background: var(--surface);
 }
-
-.badge {
-  padding: 4px 8px;
-  border-radius: 999px;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.badge--orange { background: #ff8d28; }
-.badge--green { background: #34c759; }
 
 .doc__info {
   display: flex;
@@ -613,38 +630,21 @@ a { color: inherit; text-decoration: none; }
   font-size: 12px;
 }
 
+.doc__info .doc__path {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* Atividade recente */
 .tenants {
   display: flex;
   gap: 12px;
   overflow-x: auto;
-  scrollbar-width: thin;
+  scrollbar-width: none;
 }
 
-.tenant {
-  flex: 0 0 200px;
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  height: 300px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: var(--surface);
-  overflow: hidden;
-}
-
-.tenant__photo {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  height: 200px;
-  flex-shrink: 0;
-  padding: 8px 8px 0;
-  overflow: hidden;
-}
-
-.tenant__photo--empty { background: rgba(0, 0, 0, 0.74); }
-
+/* Foto dos cards de inquilino (Dashboard e Imóveis) */
 .tenant__img {
   position: absolute;
   inset: 0;
@@ -663,47 +663,6 @@ a { color: inherit; text-decoration: none; }
 }
 
 .tenant__img--difference { mix-blend-mode: difference; }
-
-.pill {
-  position: relative;
-  align-self: flex-start;
-  padding: 4px 8px;
-  border-radius: 18px;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.pill--red { background: rgba(255, 56, 60, 0.75); }
-.pill--orange { background: rgba(255, 141, 40, 0.75); }
-
-.tenant__data {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 12px;
-}
-
-.tenant__data h3,
-.tenant__data p {
-  flex: 1 0 0;
-  display: flex;
-  align-items: center;
-}
-
-.tenant__data h3 {
-  color: var(--text-strong);
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.tenant__data p {
-  color: var(--text-caption);
-  font-size: 12px;
-  font-weight: 500;
-}
 
 /* ============ Página Imóveis ============ */
 .nav__item.is-active--neutral {
@@ -817,18 +776,14 @@ a { color: inherit; text-decoration: none; }
   gap: 12px;
   min-width: 200px;
   overflow-x: auto;
-  scrollbar-width: thin;
+  scrollbar-width: none;
 }
 
+/* Card de inquilino (Imóveis e Dashboard) */
 .tenant-mini {
-  flex: 0 0 200px;
   display: flex;
   flex-direction: column;
-  width: 200px;
-  height: 300px;
-  border-radius: 14px;
   background: #f2f2f2;
-  overflow: hidden;
 }
 
 .tenant-mini__photo {
@@ -839,6 +794,15 @@ a { color: inherit; text-decoration: none; }
   flex-shrink: 0;
   padding: 8px 8px 0;
   overflow: hidden;
+}
+
+/* inquilino sem foto */
+.tenant-mini__photo--empty { background: rgba(0, 0, 0, 0.74); }
+
+/* etiqueta no topo, a 8px da borda, por cima da foto */
+.tenant-mini__photo .chip {
+  position: relative;
+  align-self: flex-start;
 }
 
 .tenant-mini h3 {
@@ -884,19 +848,16 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   gap: 12px;
   overflow-x: auto;
-  scrollbar-width: thin;
+  scrollbar-width: none;
 }
 
+/* Card de contas do mês (Imóveis) — etiqueta no topo, a 8px da borda */
 .bill {
-  flex: 0 0 200px;
-  width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 300px;
-  padding: 16px;
+  padding: 7px 16px 16px; /* 7px + 1px de borda = etiqueta a 8px do topo */
   border: 1px solid var(--border);
-  border-radius: 14px;
   background: var(--surface);
 }
 
@@ -905,6 +866,8 @@ a { color: inherit; text-decoration: none; }
   flex-direction: column;
   gap: 12px;
 }
+
+.bill__top > .chip { align-self: center; }
 
 .bill__header {
   display: flex;
@@ -970,24 +933,6 @@ a { color: inherit; text-decoration: none; }
   flex-direction: column;
   align-items: center;
   gap: 8px;
-}
-
-.status-badge {
-  padding: 4px 8px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.status-badge--late {
-  background: #fef2f2;
-  color: #dc2626;
-}
-
-.status-badge--paid {
-  background: #f0fdf4;
-  color: #16a34a;
 }
 
 .bill__link {
@@ -1073,20 +1018,6 @@ a { color: inherit; text-decoration: none; }
 }
 
 .tenant-card__info .tenant-card__phone { color: var(--text-subtle); }
-
-.tag {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 18px;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.tag--late { background: rgba(255, 56, 60, 0.75); }
-.tag--pending { background: rgba(255, 141, 40, 0.75); }
-.tag--paid { background: rgba(52, 199, 89, 0.75); }
 
 .tenant-card__row {
   display: flex;
@@ -1283,20 +1214,26 @@ td.tx__value { font-weight: 700; }
   background: var(--surface);
 }
 
+/*
+ * "Recentes" funciona como o Prédio A em Imóveis: card em destaque com no máximo 600px
+ * (encolhe se faltar espaço, nunca estica) e os cards menores numa lista ao lado, que ocupa
+ * o espaço restante e rola na horizontal. Em áreas estreitas a lista vai para baixo do card.
+ */
 .docs-recent__row {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   gap: 12px;
   padding: 10px 0;
 }
 
+/* Mesmo tamanho do card do Prédio A: até 600px de largura e 300px de altura fixos */
 .doc-featured {
+  container: featured / inline-size;
   display: flex;
-  align-items: flex-start;
+  flex: 0 1 600px;
+  min-width: 0;
+  align-items: stretch;
   gap: 10px;
-  width: 600px;
-  max-width: 100%;
   height: 300px;
   padding: 10px;
   border-radius: 18px;
@@ -1304,10 +1241,15 @@ td.tx__value { font-weight: 700; }
   overflow: hidden;
 }
 
-/* Imagem do PDF posicionada como no Figma: 122×150 dentro de um quadro de 280×280 */
+/*
+ * Quadro da prévia: 280×280 como no Figma. Quando o card encolhe, é a prévia que diminui
+ * (o texto mantém o espaço que precisa). A imagem do PDF (122×150) fica centralizada — na
+ * largura cheia, na mesma posição do Figma — e só diminui (sem distorcer) quando não cabe.
+ */
 .doc-featured__preview {
   position: relative;
-  flex-shrink: 0;
+  flex: 0 1 280px;
+  min-width: 0;
   width: 280px;
   height: 280px;
   border-radius: 8px;
@@ -1315,19 +1257,20 @@ td.tx__value { font-weight: 700; }
 
 .doc-featured__preview img {
   position: absolute;
-  left: 28.16%;
-  top: 23.14%;
-  width: 43.57%;
-  height: 53.51%;
+  left: 50%;
+  top: 50%;
+  width: min(122px, calc(100% - 16px));
+  height: auto;
+  aspect-ratio: 122 / 150;
+  transform: translate(-50%, -50%);
 }
 
 .doc-featured__details {
   flex: 1 1 0;
-  min-width: 0;
+  min-width: 260px; /* o texto precisa de ~250px para caber nos 300px de altura sem esconder nada */
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 100%;
 }
 
 .doc-featured__title {
@@ -1364,42 +1307,12 @@ td.tx__value { font-weight: 700; }
 .chip-button:hover { background: #5e5e5e; }
 
 .docs-recent__cards {
+  flex: 1 1 0;
   display: flex;
   gap: 12px;
-}
-
-.doc-mini {
-  flex: 0 0 200px;
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-  height: 300px;
-  border-radius: 14px;
-  background: #f2f2f2;
-  overflow: hidden;
-}
-
-.doc-mini__thumb {
-  flex-shrink: 0;
-  height: 200px;
-  background: rgba(0, 0, 0, 0.74);
-}
-
-.doc-mini h3 {
-  padding: 8px 10px 4px;
-  color: #000;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.doc-mini p {
-  padding: 2px 12px 4px 10px;
-  color: var(--text-caption);
-  font-size: 10px;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  min-width: 200px;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
 /* Todos os documentos */
@@ -2218,6 +2131,44 @@ textarea.field__input {
   line-height: 1.45;
 }
 
+/* ============ Listas horizontais ============ */
+/*
+ * Sem barra de rolagem (scrollbar-width: none nas próprias regras + o equivalente do WebKit).
+ * No mouse, a lista desliza ao parar perto de uma borda (edge-scroll.js); no toque,
+ * trackpad ou Shift + roda do mouse ela continua rolando normalmente.
+ * A borda do lado que ainda tem conteúdo fica esmaecida, indicando que há mais itens.
+ */
+.bills::-webkit-scrollbar,
+.tenants::-webkit-scrollbar,
+.docs::-webkit-scrollbar,
+.property__tenants::-webkit-scrollbar,
+.docs-recent__cards::-webkit-scrollbar { display: none; }
+
+/*
+ * Esmaecimento de 24px em curva suave. Na borda o conteúdo fica com 10% de opacidade em vez de
+ * sumir por completo, para não formar uma faixa branca sólida.
+ */
+.edge-scroll--left,
+.edge-scroll--right {
+  --fade-in: rgba(0, 0, 0, 0.1) 0, rgba(0, 0, 0, 0.32) 5px, rgba(0, 0, 0, 0.6) 10px, rgba(0, 0, 0, 0.84) 16px, #000 24px;
+  --fade-out: #000 calc(100% - 24px), rgba(0, 0, 0, 0.84) calc(100% - 16px), rgba(0, 0, 0, 0.6) calc(100% - 10px), rgba(0, 0, 0, 0.32) calc(100% - 5px), rgba(0, 0, 0, 0.1) 100%;
+}
+
+.edge-scroll--left {
+  -webkit-mask-image: linear-gradient(to right, var(--fade-in));
+  mask-image: linear-gradient(to right, var(--fade-in));
+}
+
+.edge-scroll--right {
+  -webkit-mask-image: linear-gradient(to right, #000 0, var(--fade-out));
+  mask-image: linear-gradient(to right, #000 0, var(--fade-out));
+}
+
+.edge-scroll--left.edge-scroll--right {
+  -webkit-mask-image: linear-gradient(to right, var(--fade-in), var(--fade-out));
+  mask-image: linear-gradient(to right, var(--fade-in), var(--fade-out));
+}
+
 /* ============ Responsivo ============ */
 /*
  * Dois níveis:
@@ -2233,19 +2184,38 @@ textarea.field__input {
   .tenant-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* Financeiro: os 3 resumos não cabem lado a lado; Documentos: destaque (600px) empilha */
+/* Financeiro: os 3 resumos não cabem lado a lado */
 @container main (max-width: 660px) {
   .finance-summary { flex-direction: column; gap: 12px; }
+}
+
+/*
+ * Documentos, "Recentes", lado a lado: se sobrar pouco para a prévia (card com até 360px),
+ * ela some e o texto usa o card inteiro — uma prévia com poucos pixels não mostraria nada.
+ */
+@container main (width > 560px) {
+  @container featured (max-width: 360px) {
+    .doc-featured__preview { display: none; }
+  }
+}
+
+/*
+ * Documentos, "Recentes" (mesmo ponto de troca do Prédio A): o destaque ocupa a largura toda
+ * e a lista vai para baixo, rolando na horizontal.
+ */
+@container main (max-width: 560px) {
+  .docs-recent__row { flex-wrap: wrap; }
 
   .doc-featured {
+    flex: 1 1 0;
     flex-direction: column;
     align-items: stretch;
     height: auto;
   }
 
-  .doc-featured__preview { width: 100%; height: 200px; }
-  .doc-featured__preview img { left: 50%; top: 25px; width: 122px; height: 150px; margin-left: -61px; }
-  .docs-recent__cards { width: 100%; overflow-x: auto; scrollbar-width: thin; }
+  .doc-featured__preview { flex: none; min-width: 0; width: 100%; height: 200px; }
+  .doc-featured__details { min-width: 0; }
+  .docs-recent__cards { flex: 0 0 100%; width: 100%; min-width: 0; }
 }
 
 /* Grade de Inquilinos em 1 coluna */
