@@ -171,6 +171,14 @@ a { color: inherit; text-decoration: none; }
   background: var(--surface);
 }
 
+/* Header que fica no topo durante a rolagem; a borda inferior faz o papel do separador */
+.page-title--sticky {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--border);
+}
+
 .page-title__text {
   display: flex;
   flex-direction: column;
@@ -294,8 +302,9 @@ a { color: inherit; text-decoration: none; }
 /* Situação dos aluguéis */
 .houses {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
-  overflow: hidden;
 }
 
 .houses img {
@@ -1957,6 +1966,12 @@ td.tx__value { font-weight: 700; }
 
   .page-title__actions { width: 100%; flex-wrap: wrap; }
   .search { flex: 1; width: auto; }
+
+  /* Header fixo mais baixo no celular: título menor e busca + botão na mesma linha */
+  .page-title--sticky { gap: 12px; padding: 16px 4px 12px; }
+  .page-title--sticky h1 { font-size: 32px; }
+  .page-title--sticky .page-title__actions { flex-wrap: nowrap; }
+  .page-title--sticky .search { flex: 1 1 0; min-width: 0; }
   .card__header { flex-wrap: wrap; }
   .houses { flex-wrap: wrap; justify-content: center; }
   .houses img { width: 72px; height: 72px; }
