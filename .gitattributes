@@ -1,0 +1,2 @@
+# PDFs são binários: o Git não deve converter quebras de linha neles (isso corromperia os arquivos)
+*.pdf binary
