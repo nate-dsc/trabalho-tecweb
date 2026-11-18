@@ -1,0 +1,60 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 1234 >>
+stream
+BT /F1 9 Tf 56 786.0 Td (GestorImoveis Ltda – CNPJ 12.345.678/0001-90 – Rua das Flores, 123) Tj ET
+0.85 0.15 0.15 rg
+BT /F2 9 Tf 56 772.0 Td (DOCUMENTO FICTÍCIO – criado apenas para demonstração do sistema. Sem valor legal.) Tj ET
+0 0 0 rg
+BT /F2 18 Tf 56 742.0 Td (Comprovante de depósito do caução) Tj ET
+0.6 G 0.8 w 56 730.0 m 539 730.0 l S
+BT /F2 10.5 Tf 56 706.0 Td (Locatário:) Tj ET
+BT /F1 10.5 Tf 200 706.0 Td (Gabriel Gabé) Tj ET
+BT /F2 10.5 Tf 56 690.0 Td (Imóvel:) Tj ET
+BT /F1 10.5 Tf 200 690.0 Td (Av. Champs-Élysées, 71) Tj ET
+BT /F2 10.5 Tf 56 674.0 Td (Valor depositado:) Tj ET
+BT /F1 10.5 Tf 200 674.0 Td (R$ 9.600,00 \(3 aluguéis de R$ 3.200,00\)) Tj ET
+BT /F2 10.5 Tf 56 658.0 Td (Data e hora:) Tj ET
+BT /F1 10.5 Tf 200 658.0 Td (27/05/2026, 10:47) Tj ET
+BT /F2 10.5 Tf 56 642.0 Td (Forma:) Tj ET
+BT /F1 10.5 Tf 200 642.0 Td (transferência bancária) Tj ET
+BT /F1 10.5 Tf 56 620.0 Td (O valor fica retido como garantia durante a locação e será devolvido, corrigido, ao fim do) Tj ET
+BT /F1 10.5 Tf 56 605.0 Td (contrato, descontados eventuais débitos ou reparos apontados na vistoria de saída.) Tj ET
+0.45 g
+BT /F1 8.5 Tf 56 48 Td (Gerado pelo GestorImoveis \(versão de demonstração\). Os dados são fictícios.) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Title <FEFF0043006F006D00700072006F00760061006E00740065002000640065002000640065007000F3007300690074006F00200064006F002000630061007500E700E3006F> /Producer (GestorImoveis demo) >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000000354 00000 n 
+0000000456 00000 n 
+0000001742 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R /Info 7 0 R >>
+startxref
+1940
+%%EOF

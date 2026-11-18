@@ -132,13 +132,70 @@
         <section class="settings__section">
           <h2 class="settings__title">Segurança</h2>
           <div class="settings__actions">
-            <button class="btn-primary btn-primary--plain" type="button">Alterar senha</button>
-            <button class="btn-secondary" type="button">Autenticação em dois fatores</button>
+            <button class="btn-primary btn-primary--plain" type="button" data-modal="modal-alterar-senha" aria-haspopup="dialog">Alterar senha</button>
+            <button class="btn-secondary" type="button" id="btn-2fa" data-modal="modal-2fa" aria-haspopup="dialog">Autenticação em dois fatores</button>
           </div>
         </section>
       </div>
     </main>
   </div>
+
+  <!-- Alterar senha (demonstração) -->
+  <dialog class="modal" id="modal-alterar-senha" aria-labelledby="modal-alterar-senha-title">
+    <form id="form-alterar-senha" data-demo-form data-success="Senha alterada. Use a nova senha no próximo acesso.">
+      <div class="modal__header">
+        <h2 class="modal__title" id="modal-alterar-senha-title">Alterar senha</h2>
+        <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
+      </div>
+      <div class="modal__body">
+        <label class="field">
+          <span class="field__label">Senha atual</span>
+          <input class="field__input" id="senha-atual" type="password" required autofocus autocomplete="current-password" data-message-required="Informe sua senha atual.">
+        </label>
+        <label class="field">
+          <span class="field__label">Nova senha</span>
+          <input class="field__input" id="senha-nova" type="password" required autocomplete="new-password" pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" minlength="8" data-message-pattern="Use letras e números, com pelo menos 8 caracteres." data-message-length="Use pelo menos 8 caracteres, com letras e números." data-differs="#senha-atual" data-message-differs="A nova senha precisa ser diferente da atual." data-message-required="Crie a nova senha.">
+        </label>
+        <label class="field">
+          <span class="field__label">Confirmar nova senha</span>
+          <input class="field__input" id="senha-confirmacao" type="password" required autocomplete="new-password" data-match="#senha-nova" data-message-match="As senhas não conferem." data-message-required="Repita a nova senha.">
+        </label>
+      </div>
+      <div class="modal__footer">
+        <button class="btn-secondary" type="button" data-close>Cancelar</button>
+        <button class="btn-primary" type="submit">Salvar nova senha</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Autenticação em dois fatores (demonstração) -->
+  <dialog class="modal" id="modal-2fa" aria-labelledby="modal-2fa-title">
+    <form id="form-2fa" data-demo-form>
+      <div class="modal__header">
+        <h2 class="modal__title" id="modal-2fa-title">Autenticação em dois fatores</h2>
+        <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
+      </div>
+      <div class="modal__body" data-2fa="inativa">
+        <p>Além da senha, o login passa a pedir um código do seu aplicativo autenticador (Google Authenticator, Authy ou similar). Abra o aplicativo e digite o código de 6 dígitos para confirmar.</p>
+        <p>Nesta demonstração, qualquer código de 6 dígitos é aceito.</p>
+        <label class="field">
+          <span class="field__label">Código de verificação</span>
+          <input class="field__input" id="codigo-2fa" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="000000" required autofocus data-message-required="Digite o código de 6 dígitos." data-message-pattern="O código tem 6 dígitos, só números.">
+        </label>
+      </div>
+      <div class="modal__body" data-2fa="ativa" hidden>
+        <p>A autenticação em dois fatores está ativa. Se desativar, o login volta a pedir só e-mail e senha.</p>
+      </div>
+      <div class="modal__footer">
+        <button class="btn-secondary" type="button" data-close>Cancelar</button>
+        <button class="btn-primary" type="submit" data-2fa="inativa">Ativar</button>
+        <button class="btn-primary" type="submit" data-2fa="ativa" hidden>Desativar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/demo.js"></script>
   <script src="assets/js/configuracoes.js"></script>
 </body>
 </html>

@@ -70,11 +70,14 @@
           <h1>Dashboard</h1>
         </div>
         <div class="page-title__actions">
-          <label class="search">
-            <img src="assets/icons/search.svg" alt="" width="24" height="24">
-            <input type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-          </label>
-          <button class="btn-primary" type="button">
+          <form class="search-form" id="busca" role="search" autocomplete="off">
+            <label class="search">
+              <img src="assets/icons/search.svg" alt="" width="24" height="24">
+              <input type="search" id="busca-input" placeholder="Pesquisar" aria-label="Pesquisar inquilinos, imóveis e documentos" aria-controls="busca-resultados" aria-expanded="false">
+            </label>
+            <div class="search-results" id="busca-resultados" hidden></div>
+          </form>
+          <button class="btn-primary" type="button" data-modal="modal-novo-imovel" aria-haspopup="dialog">
             <img src="assets/icons/plus.svg" alt="" width="16" height="16">
             Novo imóvel
           </button>
@@ -144,7 +147,7 @@
                 <span class="badge badge--orange">Mais recente</span>
               </div>
               <div class="doc__info">
-                <h3>Contrato de Aluguel</h3>
+                <h3><a class="stretched-link" href="assets/docs/contrato_alexey.pdf" target="_blank" rel="noopener">Contrato de Aluguel</a></h3>
                 <p>27/05/2026</p>
                 <p>Prédio A, apartamento 1508</p>
               </div>
@@ -155,7 +158,7 @@
                 <span class="badge badge--green">Comprovante</span>
               </div>
               <div class="doc__info">
-                <h3>Depósito do Caução</h3>
+                <h3><a class="stretched-link" href="assets/docs/comprovante_caucao.pdf" target="_blank" rel="noopener">Depósito do Caução</a></h3>
                 <p>27/05/2026</p>
                 <p>Av. Champs-Élysées, 71</p>
               </div>
@@ -167,7 +170,7 @@
         <section class="block block--tight">
           <div class="block__header">
             <h2 class="block__title">Atividade recente</h2>
-            <a class="link" href="#">Ver todos</a>
+            <a class="link" href="inquilinos.html">Ver todos</a>
           </div>
           <div class="tenants">
             <article class="tenant">
@@ -212,15 +215,15 @@
             <article class="tenant">
               <div class="tenant__photo tenant__photo--empty"></div>
               <div class="tenant__data">
-                <h3>Alexey H.M.S.</h3>
-                <p>Prédio A, apartamento 1508</p>
+                <h3>Marina Lopes</h3>
+                <p>Av. Beira-Mar, 1500, apartamento 902</p>
               </div>
             </article>
             <article class="tenant">
               <div class="tenant__photo tenant__photo--empty"></div>
               <div class="tenant__data">
-                <h3>Alexey H.M.S.</h3>
-                <p>Prédio A, apartamento 1508</p>
+                <h3>Rafael Nunes</h3>
+                <p>Rua Padre Ibiapina, 310</p>
               </div>
             </article>
           </div>
@@ -228,5 +231,47 @@
       </div>
     </main>
   </div>
+
+  <!-- Novo imóvel (demonstração) -->
+  <dialog class="modal" id="modal-novo-imovel" aria-labelledby="modal-novo-imovel-title">
+    <form id="form-novo-imovel" data-demo-form>
+      <div class="modal__header">
+        <h2 class="modal__title" id="modal-novo-imovel-title">Novo imóvel</h2>
+        <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
+      </div>
+      <div class="modal__body">
+        <p>Informe o endereço e as condições do aluguel. Nesta demonstração o imóvel não fica salvo.</p>
+        <label class="field">
+          <span class="field__label">Endereço</span>
+          <input class="field__input" id="imovel-endereco" type="text" placeholder="Ex.: Rua das Flores, 45, apto 201" required minlength="5" autofocus autocomplete="street-address" data-message-length="Informe o endereço completo, com rua e número.">
+        </label>
+        <label class="field">
+          <span class="field__label">Tipo</span>
+          <select class="field__input" id="imovel-tipo" required>
+            <option value="">Selecione</option>
+            <option>Apartamento</option>
+            <option>Casa</option>
+            <option>Sala comercial</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="field__label">Aluguel mensal (R$)</span>
+          <input class="field__input" id="imovel-aluguel" type="text" inputmode="decimal" placeholder="Ex.: 1.500,00" required data-money data-message-min="Informe um aluguel maior que zero.">
+        </label>
+        <label class="field">
+          <span class="field__label">Dia de vencimento</span>
+          <input class="field__input" id="imovel-dia" type="number" inputmode="numeric" min="1" max="28" step="1" placeholder="De 1 a 28" required data-message-min="Escolha um dia entre 1 e 28." data-message-max="Escolha um dia entre 1 e 28." data-message-step="Use um dia inteiro, entre 1 e 28." data-message-bad="Use um dia inteiro, entre 1 e 28.">
+        </label>
+      </div>
+      <div class="modal__footer">
+        <button class="btn-secondary" type="button" data-close>Cancelar</button>
+        <button class="btn-primary" type="submit">Cadastrar imóvel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/demo.js"></script>
+  <script src="assets/js/dashboard.js"></script>
 </body>
 </html>

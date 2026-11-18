@@ -465,6 +465,22 @@ a { color: inherit; text-decoration: none; }
   padding: 4px 8px 16px;
 }
 
+/* O link do título cobre o card inteiro: clicar em qualquer parte abre o PDF */
+.doc,
+.doc-mini,
+.doc-row { position: relative; }
+
+.stretched-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.stretched-link:hover { text-decoration: underline; }
+.stretched-link:focus-visible { outline: none; }
+.stretched-link:focus-visible::after { outline: 2px solid var(--primary); outline-offset: -2px; }
+
 .doc {
   flex: 0 0 200px;
   width: 200px;
@@ -894,10 +910,20 @@ a { color: inherit; text-decoration: none; }
   color: #dc2626;
 }
 
+.status-badge--paid {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
 .bill__link {
+  padding: 0;
+  border: 0;
+  background: none;
   color: var(--primary);
+  font: inherit;
   font-size: 13px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .bill__link:hover { text-decoration: underline; }
@@ -1008,9 +1034,14 @@ a { color: inherit; text-decoration: none; }
 .tenant-card__link {
   align-self: flex-end;
   margin-top: auto;
+  padding: 0;
+  border: 0;
+  background: none;
   color: var(--primary);
+  font: inherit;
   font-size: 13px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .tenant-card__link:hover { text-decoration: underline; }
@@ -1988,6 +2019,127 @@ td.tx__value { font-weight: 700; }
 .forgot .btn-primary { justify-content: center; }
 .forgot__done { color: var(--text-strong); }
 
+/* ============ Fluxos de demonstração (modais, validação, avisos) ============ */
+.field--invalid,
+.field--invalid:focus-within { border-color: #dc2626; }
+.field--invalid:focus-within { box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15); }
+
+.field-error {
+  margin-top: -6px;
+  color: #dc2626;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+select.field__input { cursor: pointer; }
+
+textarea.field__input {
+  min-height: 88px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.modal__subtitle {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.modal__body .tenant-card__row { font-size: 13px; }
+.modal__body .tenant-card__row strong { white-space: normal; text-align: right; }
+.modal__body .bill__list { font-size: 13px; }
+
+.avatar--sm {
+  width: 40px;
+  height: 40px;
+  font-size: 13px;
+}
+
+.toast-region {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(460px, calc(100vw - 32px));
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.toast {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--text-strong);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.45;
+  box-shadow: 0 12px 32px rgba(17, 24, 39, 0.25);
+  animation: toast-in 0.2s ease-out;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast.is-leaving { opacity: 0; transform: translateY(8px); }
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast { animation: none; transition: none; }
+}
+
+/* Busca do Dashboard */
+.search-form { position: relative; }
+
+.search-results {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 20;
+  width: 360px;
+  max-height: 360px;
+  padding: 6px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: 0 12px 32px rgba(17, 24, 39, 0.12);
+}
+
+.search-results a {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--text-strong);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.search-results a:hover,
+.search-results a:focus-visible {
+  background: var(--surface-muted);
+  outline: none;
+}
+
+.search-results small {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.search-results__empty {
+  padding: 8px 10px;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
 /* ============ Responsivo ============ */
 @media (max-width: 1100px) {
   .tenant-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -2019,7 +2171,12 @@ td.tx__value { font-weight: 700; }
   .page-title--sticky { gap: 12px; padding: 16px var(--gutter) 12px; }
   .page-title--sticky h1 { font-size: 32px; }
   .page-title--sticky .page-title__actions { flex-wrap: nowrap; }
-  .page-title--sticky .search { flex: 1 1 0; min-width: 0; }
+  .page-title--sticky .search-form { flex: 1 1 0; min-width: 0; }
+  .page-title--sticky .search { width: 100%; min-width: 0; }
+  /* no celular a busca divide a linha com "Novo imóvel": o painel usa a largura toda do header */
+  .page-title--sticky .page-title__actions { position: relative; }
+  .page-title--sticky .search-form { position: static; }
+  .search-results { left: 0; width: auto; }
   .property__title--sticky { top: var(--sticky-offset, 68px); }
   /* No celular o header vem depois da barra lateral, então ele não "sobe": mantém o espaçamento normal */
   .main:has(> .page-title--sticky) { margin-top: 0; }

@@ -98,7 +98,7 @@
                 </div>
                 <div>
                   <dt>Aluguel:</dt>
-                  <dd>R$ 1.050,85</dd>
+                  <dd>R$ 1.650,85 (1507), R$ 1.050,85 (1508)</dd>
                 </div>
               </dl>
             </div>
@@ -144,8 +144,8 @@
                 <div class="bill__total"><span>Total</span><strong>R$ 984,07</strong></div>
               </div>
               <div class="bill__bottom">
-                <span class="status-badge status-badge--late">Atrasado</span>
-                <a class="bill__link" href="#">Ver detalhes</a>
+                <span class="status-badge status-badge--paid">Pago</span>
+                <button class="bill__link" type="button" data-bill-details aria-haspopup="dialog">Ver detalhes</button>
               </div>
             </article>
             <article class="bill">
@@ -165,7 +165,7 @@
               </div>
               <div class="bill__bottom">
                 <span class="status-badge status-badge--late">Atrasado</span>
-                <a class="bill__link" href="#">Ver detalhes</a>
+                <button class="bill__link" type="button" data-bill-details aria-haspopup="dialog">Ver detalhes</button>
               </div>
             </article>
             <article class="bill">
@@ -184,8 +184,8 @@
                 <div class="bill__total"><span>Total</span><strong>R$ 984,07</strong></div>
               </div>
               <div class="bill__bottom">
-                <span class="status-badge status-badge--late">Atrasado</span>
-                <a class="bill__link" href="#">Ver detalhes</a>
+                <span class="status-badge status-badge--paid">Pago</span>
+                <button class="bill__link" type="button" data-bill-details aria-haspopup="dialog">Ver detalhes</button>
               </div>
             </article>
             <article class="bill">
@@ -204,8 +204,8 @@
                 <div class="bill__total"><span>Total</span><strong>R$ 984,07</strong></div>
               </div>
               <div class="bill__bottom">
-                <span class="status-badge status-badge--late">Atrasado</span>
-                <a class="bill__link" href="#">Ver detalhes</a>
+                <span class="status-badge status-badge--paid">Pago</span>
+                <button class="bill__link" type="button" data-bill-details aria-haspopup="dialog">Ver detalhes</button>
               </div>
             </article>
             <article class="bill">
@@ -224,8 +224,8 @@
                 <div class="bill__total"><span>Total</span><strong>R$ 984,07</strong></div>
               </div>
               <div class="bill__bottom">
-                <span class="status-badge status-badge--late">Atrasado</span>
-                <a class="bill__link" href="#">Ver detalhes</a>
+                <span class="status-badge status-badge--paid">Pago</span>
+                <button class="bill__link" type="button" data-bill-details aria-haspopup="dialog">Ver detalhes</button>
               </div>
             </article>
             <article class="bill">
@@ -244,198 +244,53 @@
                 <div class="bill__total"><span>Total</span><strong>R$ 984,07</strong></div>
               </div>
               <div class="bill__bottom">
-                <span class="status-badge status-badge--late">Atrasado</span>
-                <a class="bill__link" href="#">Ver detalhes</a>
+                <span class="status-badge status-badge--paid">Pago</span>
+                <button class="bill__link" type="button" data-bill-details aria-haspopup="dialog">Ver detalhes</button>
               </div>
             </article>
             </div>
           </div>
         </section>
 
-        <!-- Segundo prédio (no Figma é uma cópia do Prédio A) -->
-        <section class="property">
-          <h2 class="property__title property__title--sticky">Prédio A</h2>
-
-          <div class="property__middle">
-            <div class="property__details">
-              <img class="property__photo" src="assets/img/predio-a.png" alt="Fachada do Prédio A" width="280" height="280">
-              <dl class="property__info">
-                <div>
-                  <dt>Endereço:</dt>
-                  <dd>Rua dos Bobos, número 0 – Centro</dd>
-                  <dd>Sobral, Ceará, Brasil</dd>
-                </div>
-                <div>
-                  <dt>Apartamentos:</dt>
-                  <dd>Apartamento 1507</dd>
-                  <dd>Apartamento 1508</dd>
-                </div>
-                <div>
-                  <dt>Número de inquilinos:</dt>
-                  <dd>2</dd>
-                </div>
-                <div>
-                  <dt>Metragem:</dt>
-                  <dd>80 m² (1507), 50 m² (1508)</dd>
-                </div>
-                <div>
-                  <dt>Aluguel:</dt>
-                  <dd>R$ 1.050,85</dd>
-                </div>
-              </dl>
-            </div>
-
-            <div class="property__tenants">
-              <article class="tenant-mini">
-                <div class="tenant-mini__photo">
-                  <img class="tenant__img" src="assets/img/inquilino-1.png" alt="">
-                  <span class="pill pill--red">Atrasado</span>
-                </div>
-                <h3>Alexey H.M.S.</h3>
-                <p>Prédio A, apartamento 1508</p>
-              </article>
-              <article class="tenant-mini">
-                <div class="tenant-mini__photo">
-                  <img class="tenant__img tenant__img--difference" src="assets/img/inquilino-1.png" alt="">
-                </div>
-                <h3>S.M.S. Yexela</h3>
-                <p>Prédio A, apartamento 1507</p>
-              </article>
-            </div>
-          </div>
-
-          <div class="property__bottom">
-            <div class="property__section-header">
-              <h3>Histórico financeiro</h3>
-              <p>Resumo mensal dos apartamentos</p>
-            </div>
-            <div class="bills">
-            <article class="bill">
-              <div class="bill__top">
-                <header class="bill__header">
-                  <h4>Junho de 2026</h4>
-                  <p>Apartamento 1507</p>
-                </header>
-                <dl class="bill__list">
-                  <div><dt>Água</dt><dd>R$ 45,00</dd></div>
-                  <div><dt>Energia</dt><dd>R$ 128,00</dd></div>
-                  <div><dt>Gás</dt><dd>R$ 18,00</dd></div>
-                  <div><dt>Condomínio</dt><dd>R$ 793,07</dd></div>
-                </dl>
-                <hr class="separator">
-                <div class="bill__total"><span>Total</span><strong>R$ 984,07</strong></div>
-              </div>
-              <div class="bill__bottom">
-                <span class="status-badge status-badge--late">Atrasado</span>
-                <a class="bill__link" href="#">Ver detalhes</a>
-              </div>
-            </article>
-            <article class="bill">
-              <div class="bill__top">
-                <header class="bill__header">
-                  <h4>Junho de 2026</h4>
-                  <p>Apartamento 1508</p>
-                </header>
-                <dl class="bill__list">
-                  <div><dt>Água</dt><dd>R$ 42,00</dd></div>
-                  <div><dt>Energia</dt><dd>R$ 124,00</dd></div>
-                  <div><dt>Gás</dt><dd>R$ 17,00</dd></div>
-                  <div><dt>Condomínio</dt><dd>R$ 801,07</dd></div>
-                </dl>
-                <hr class="separator">
-                <div class="bill__total"><span>Total</span><strong>R$ 984,07</strong></div>
-              </div>
-              <div class="bill__bottom">
-                <span class="status-badge status-badge--late">Atrasado</span>
-                <a class="bill__link" href="#">Ver detalhes</a>
-              </div>
-            </article>
-            <article class="bill">
-              <div class="bill__top">
-                <header class="bill__header">
-                  <h4>Maio de 2026</h4>
-                  <p>Apartamento 1507</p>
-                </header>
-                <dl class="bill__list">
-                  <div><dt>Água</dt><dd>R$ 48,00</dd></div>
-                  <div><dt>Energia</dt><dd>R$ 136,00</dd></div>
-                  <div><dt>Gás</dt><dd>R$ 19,00</dd></div>
-                  <div><dt>Condomínio</dt><dd>R$ 781,07</dd></div>
-                </dl>
-                <hr class="separator">
-                <div class="bill__total"><span>Total</span><strong>R$ 984,07</strong></div>
-              </div>
-              <div class="bill__bottom">
-                <span class="status-badge status-badge--late">Atrasado</span>
-                <a class="bill__link" href="#">Ver detalhes</a>
-              </div>
-            </article>
-            <article class="bill">
-              <div class="bill__top">
-                <header class="bill__header">
-                  <h4>Maio de 2026</h4>
-                  <p>Apartamento 1508</p>
-                </header>
-                <dl class="bill__list">
-                  <div><dt>Água</dt><dd>R$ 41,00</dd></div>
-                  <div><dt>Energia</dt><dd>R$ 122,00</dd></div>
-                  <div><dt>Gás</dt><dd>R$ 16,00</dd></div>
-                  <div><dt>Condomínio</dt><dd>R$ 805,07</dd></div>
-                </dl>
-                <hr class="separator">
-                <div class="bill__total"><span>Total</span><strong>R$ 984,07</strong></div>
-              </div>
-              <div class="bill__bottom">
-                <span class="status-badge status-badge--late">Atrasado</span>
-                <a class="bill__link" href="#">Ver detalhes</a>
-              </div>
-            </article>
-            <article class="bill">
-              <div class="bill__top">
-                <header class="bill__header">
-                  <h4>Abril de 2026</h4>
-                  <p>Apartamento 1507</p>
-                </header>
-                <dl class="bill__list">
-                  <div><dt>Água</dt><dd>R$ 46,00</dd></div>
-                  <div><dt>Energia</dt><dd>R$ 130,00</dd></div>
-                  <div><dt>Gás</dt><dd>R$ 18,00</dd></div>
-                  <div><dt>Condomínio</dt><dd>R$ 790,07</dd></div>
-                </dl>
-                <hr class="separator">
-                <div class="bill__total"><span>Total</span><strong>R$ 984,07</strong></div>
-              </div>
-              <div class="bill__bottom">
-                <span class="status-badge status-badge--late">Atrasado</span>
-                <a class="bill__link" href="#">Ver detalhes</a>
-              </div>
-            </article>
-            <article class="bill">
-              <div class="bill__top">
-                <header class="bill__header">
-                  <h4>Abril de 2026</h4>
-                  <p>Apartamento 1508</p>
-                </header>
-                <dl class="bill__list">
-                  <div><dt>Água</dt><dd>R$ 43,00</dd></div>
-                  <div><dt>Energia</dt><dd>R$ 126,00</dd></div>
-                  <div><dt>Gás</dt><dd>R$ 17,00</dd></div>
-                  <div><dt>Condomínio</dt><dd>R$ 798,07</dd></div>
-                </dl>
-                <hr class="separator">
-                <div class="bill__total"><span>Total</span><strong>R$ 984,07</strong></div>
-              </div>
-              <div class="bill__bottom">
-                <span class="status-badge status-badge--late">Atrasado</span>
-                <a class="bill__link" href="#">Ver detalhes</a>
-              </div>
-            </article>
-            </div>
-          </div>
-        </section>
       </div>
     </main>
   </div>
+
+  <!-- Detalhes da conta mensal (demonstração) -->
+  <dialog class="modal" id="modal-conta" aria-labelledby="modal-conta-title">
+    <div class="modal__header">
+      <h2 class="modal__title" id="modal-conta-title">Contas do mês</h2>
+      <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
+    </div>
+    <div class="modal__body">
+      <p id="conta-resumo"></p>
+      <dl class="bill__list" id="conta-itens"></dl>
+      <hr class="separator">
+      <div class="bill__total"><span>Total</span><strong id="conta-total"></strong></div>
+      <div><span class="status-badge" id="conta-status"></span></div>
+    </div>
+    <form id="form-lembrete" data-demo-form hidden>
+      <div class="modal__body">
+        <h3 class="modal__subtitle">Enviar lembrete</h3>
+        <p>Para: <span id="lembrete-para"></span></p>
+        <label class="field">
+          <span class="field__label">Mensagem</span>
+          <textarea class="field__input" id="lembrete-mensagem" rows="4" required minlength="20" data-message-required="Escreva a mensagem do lembrete." data-message-length="A mensagem está curta demais (mínimo de 20 caracteres)."></textarea>
+        </label>
+      </div>
+      <div class="modal__footer">
+        <button class="btn-secondary" type="button" data-close>Fechar</button>
+        <button class="btn-primary" type="submit">Enviar lembrete</button>
+      </div>
+    </form>
+    <div class="modal__footer" id="conta-rodape-pago">
+      <button class="btn-primary" type="button" data-close>Fechar</button>
+    </div>
+  </dialog>
+
   <script src="assets/js/sticky-sections.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/demo.js"></script>
+  <script src="assets/js/imoveis.js"></script>
 </body>
 </html>

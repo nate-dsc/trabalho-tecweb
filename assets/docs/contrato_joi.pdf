@@ -1,0 +1,79 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 2265 >>
+stream
+BT /F1 9 Tf 56 786.0 Td (GestorImoveis Ltda – CNPJ 12.345.678/0001-90 – Rua das Flores, 123) Tj ET
+0.85 0.15 0.15 rg
+BT /F2 9 Tf 56 772.0 Td (DOCUMENTO FICTÍCIO – criado apenas para demonstração do sistema. Sem valor legal.) Tj ET
+0 0 0 rg
+BT /F2 18 Tf 56 742.0 Td (Contrato de aluguel) Tj ET
+0.6 G 0.8 w 56 730.0 m 539 730.0 l S
+BT /F2 12 Tf 56 700.0 Td (Partes) Tj ET
+BT /F2 10.5 Tf 56 682.0 Td (Locador:) Tj ET
+BT /F1 10.5 Tf 200 682.0 Td (GestorImoveis Ltda, representada por José Carlos) Tj ET
+BT /F2 10.5 Tf 56 666.0 Td (Locatário:) Tj ET
+BT /F1 10.5 Tf 200 666.0 Td (Joi de Armas) Tj ET
+BT /F2 12 Tf 56 644.0 Td (Imóvel) Tj ET
+BT /F2 10.5 Tf 56 626.0 Td (Unidade:) Tj ET
+BT /F1 10.5 Tf 200 626.0 Td (Megaprédio H7, apartamento 7223) Tj ET
+BT /F2 10.5 Tf 56 610.0 Td (Endereço:) Tj ET
+BT /F1 10.5 Tf 200 610.0 Td (Megaprédio H7) Tj ET
+BT /F2 10.5 Tf 56 594.0 Td (Área:) Tj ET
+BT /F1 10.5 Tf 200 594.0 Td (65 m²) Tj ET
+BT /F2 12 Tf 56 572.0 Td (Condições) Tj ET
+BT /F2 10.5 Tf 56 554.0 Td (Aluguel mensal:) Tj ET
+BT /F1 10.5 Tf 200 554.0 Td (R$ 2.800,00) Tj ET
+BT /F2 10.5 Tf 56 538.0 Td (Vencimento:) Tj ET
+BT /F1 10.5 Tf 200 538.0 Td (todo dia 25) Tj ET
+BT /F2 10.5 Tf 56 522.0 Td (Início da locação:) Tj ET
+BT /F1 10.5 Tf 200 522.0 Td (20/01/2026) Tj ET
+BT /F2 10.5 Tf 56 506.0 Td (Prazo:) Tj ET
+BT /F1 10.5 Tf 200 506.0 Td (30 meses) Tj ET
+BT /F2 10.5 Tf 56 490.0 Td (Reajuste:) Tj ET
+BT /F1 10.5 Tf 200 490.0 Td (anual, pelo IPCA) Tj ET
+BT /F1 10.5 Tf 56 468.0 Td (Cláusula 1 – O aluguel deve ser pago até o dia do vencimento. Após essa data, o pagamento) Tj ET
+BT /F1 10.5 Tf 56 453.0 Td (passa a constar como atrasado no sistema e está sujeito a multa de 2% e juros de 1% ao mês.) Tj ET
+BT /F1 10.5 Tf 56 434.0 Td (Cláusula 2 – Contas de água, energia, gás e condomínio da unidade são de responsabilidade do) Tj ET
+BT /F1 10.5 Tf 56 419.0 Td (locatário.) Tj ET
+BT /F1 10.5 Tf 56 400.0 Td (Cláusula 3 – O imóvel deve ser devolvido nas mesmas condições descritas no laudo de vistoria) Tj ET
+BT /F1 10.5 Tf 56 385.0 Td (de entrada.) Tj ET
+BT /F2 10.5 Tf 56 356.0 Td (Assinado em:) Tj ET
+BT /F1 10.5 Tf 200 356.0 Td (15/01/2026, 08:50) Tj ET
+0.45 g
+BT /F1 8.5 Tf 56 48 Td (Gerado pelo GestorImoveis \(versão de demonstração\). Os dados são fictícios.) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Title <FEFF0043006F006E0074007200610074006F00200064006500200061006C0075006700750065006C> /Producer (GestorImoveis demo) >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000000354 00000 n 
+0000000456 00000 n 
+0000002773 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R /Info 7 0 R >>
+startxref
+2915
+%%EOF

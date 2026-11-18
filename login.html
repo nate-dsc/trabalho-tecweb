@@ -28,7 +28,7 @@
       <div class="login__fields">
         <label class="field">
           <span class="field__label">Login</span>
-          <input class="field__input" type="text" placeholder="Digite seu e-mail ou usuário" autocomplete="username" autocapitalize="none" spellcheck="false">
+          <input class="field__input" id="login-usuario" type="text" placeholder="Digite seu e-mail ou usuário" autocomplete="username" autocapitalize="none" spellcheck="false">
         </label>
         <label class="field">
           <span class="field__label">Senha</span>
@@ -40,7 +40,7 @@
         <button class="login__submit" type="submit">Entrar</button>
         <div class="login__links">
           <button class="login__link" type="button" data-modal="modal-senha" aria-haspopup="dialog">Esqueceu a senha?</button>
-          <a class="login__link" href="#">Criar conta</a>
+          <button class="login__link" type="button" data-modal="modal-cadastro" aria-haspopup="dialog">Criar conta</button>
         </div>
       </div>
     </form>
@@ -76,7 +76,49 @@
     </form>
   </dialog>
 
+  <!-- Modal: criar conta (demonstração) -->
+  <dialog class="modal" id="modal-cadastro" aria-labelledby="modal-cadastro-title">
+    <form class="forgot" id="form-cadastro" data-demo-form>
+      <div class="modal__header">
+        <h2 class="modal__title" id="modal-cadastro-title">Criar conta</h2>
+        <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
+      </div>
+
+      <div class="modal__body" data-cadastro="form">
+        <label class="field">
+          <span class="field__label">Nome completo</span>
+          <input class="field__input" id="cadastro-nome" type="text" placeholder="Digite seu nome" required minlength="3" autocomplete="name" autofocus data-message-required="Informe seu nome." data-message-length="Informe seu nome completo.">
+        </label>
+        <label class="field">
+          <span class="field__label">E-mail</span>
+          <input class="field__input" id="cadastro-email" type="email" placeholder="Digite seu e-mail" required autocomplete="email" data-message-required="Informe seu e-mail.">
+        </label>
+        <label class="field">
+          <span class="field__label">Senha</span>
+          <input class="field__input" id="cadastro-senha" type="password" placeholder="Pelo menos 8 caracteres, com letras e números" required autocomplete="new-password" pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" minlength="8" data-message-pattern="Use letras e números, com pelo menos 8 caracteres." data-message-length="Use pelo menos 8 caracteres, com letras e números." data-message-required="Crie uma senha.">
+        </label>
+        <label class="field">
+          <span class="field__label">Confirmar senha</span>
+          <input class="field__input" id="cadastro-confirmacao" type="password" placeholder="Repita a senha" required autocomplete="new-password" data-match="#cadastro-senha" data-message-match="As senhas não conferem." data-message-required="Repita a senha.">
+        </label>
+      </div>
+
+      <div class="modal__body" data-cadastro="done" hidden>
+        <p class="forgot__done" role="status">Conta criada para <strong id="cadastro-email-confirmado"></strong>! Preenchemos o campo Login com o seu e-mail; agora é só digitar a senha e entrar. Nesta demonstração a conta não fica salva.</p>
+      </div>
+
+      <div class="modal__footer" data-cadastro="form">
+        <button class="btn-secondary" type="button" data-close>Cancelar</button>
+        <button class="btn-primary" type="submit">Criar conta</button>
+      </div>
+      <div class="modal__footer" data-cadastro="done" hidden>
+        <button class="btn-primary" type="button" data-close>Ir para o login</button>
+      </div>
+    </form>
+  </dialog>
+
   <script src="assets/js/modal.js"></script>
+  <script src="assets/js/demo.js"></script>
   <script src="assets/js/login.js"></script>
 </body>
 </html>

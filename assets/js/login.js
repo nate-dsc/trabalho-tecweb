@@ -42,3 +42,36 @@
     });
   });
 })();
+
+/*
+ * Criar conta (demonstração): valida os campos (demo.js), confirma a criação
+ * e preenche o campo Login com o e-mail informado. Nada é salvo.
+ */
+(function () {
+  'use strict';
+
+  var dialog = document.getElementById('modal-cadastro');
+  var form = document.getElementById('form-cadastro');
+  if (!dialog || !form) return;
+
+  function showStep(step) {
+    dialog.querySelectorAll('[data-cadastro]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-cadastro') !== step;
+    });
+  }
+
+  document.querySelectorAll('[data-modal="modal-cadastro"]').forEach(function (trigger) {
+    trigger.addEventListener('click', function () { showStep('form'); });
+  });
+
+  form.addEventListener('demo:valid', function (event) {
+    event.preventDefault();
+    var email = document.getElementById('cadastro-email').value.trim();
+    document.getElementById('cadastro-email-confirmado').textContent = email;
+    showStep('done');
+    var back = dialog.querySelector('[data-cadastro="done"] [data-close]');
+    if (back) back.focus();
+    var login = document.getElementById('login-usuario');
+    if (login) login.value = email;
+  });
+})();
