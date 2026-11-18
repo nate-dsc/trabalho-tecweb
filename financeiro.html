@@ -65,11 +65,9 @@
 
     <!-- Principal -->
     <main class="main">
-      <header class="page-title page-title--plain page-title--ink">
+      <header class="page-title page-title--plain page-title--ink page-title--sticky page-title--strong">
         <h1>Financeiro</h1>
       </header>
-
-      <hr class="separator separator--strong">
 
       <div class="finance-page">
         <section class="finance-summary" aria-label="Resumo financeiro">
@@ -87,8 +85,10 @@
           </div>
         </section>
 
-        <section class="transactions">
-          <h2 class="transactions__title">Transações recentes</h2>
+        <section class="block transactions">
+          <div class="block__header">
+            <h2 class="block__title">Transações recentes</h2>
+          </div>
           <div class="tx">
             <div class="tx__scroll">
               <table class="tx__table">
@@ -386,22 +386,22 @@
                 </tbody>
               </table>
             </div>
-
-            <nav class="pagination pagination--table" aria-label="Paginação" data-pagination-for="tx-list" data-label="transações">
-              <p class="pagination__results">Mostrando 1-8 de 47 transações</p>
-              <div class="pagination__controls">
-                <a class="pagination__btn" href="#" aria-label="Página anterior">
-                  <img src="assets/icons/chevron-left.svg" alt="" width="16" height="16">
-                </a>
-                <a class="pagination__btn is-current" href="#" aria-current="page">1</a>
-                <a class="pagination__btn" href="#">2</a>
-                <a class="pagination__btn" href="#">3</a>
-                <a class="pagination__btn" href="#" aria-label="Próxima página">
-                  <img src="assets/icons/chevron-right.svg" alt="" width="16" height="16">
-                </a>
-              </div>
-            </nav>
           </div>
+
+          <nav class="pagination" aria-label="Paginação" data-pagination-for="tx-list" data-label="transações">
+            <p class="pagination__results">Mostrando 1-8 de 47 transações</p>
+            <div class="pagination__controls">
+              <a class="pagination__btn" href="#" aria-label="Página anterior">
+                <img src="assets/icons/chevron-left.svg" alt="" width="16" height="16">
+              </a>
+              <a class="pagination__btn is-current" href="#" aria-current="page">1</a>
+              <a class="pagination__btn" href="#">2</a>
+              <a class="pagination__btn" href="#">3</a>
+              <a class="pagination__btn" href="#" aria-label="Próxima página">
+                <img src="assets/icons/chevron-right.svg" alt="" width="16" height="16">
+              </a>
+            </div>
+          </nav>
         </section>
       </div>
     </main>
