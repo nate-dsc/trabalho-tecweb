@@ -693,17 +693,21 @@ a { color: inherit; text-decoration: none; }
 
 .property__title--sticky.is-stuck { box-shadow: 0 1px 0 var(--border); }
 
+/*
+ * Desktop: card de informações + lista de inquilinos lado a lado (sem quebrar linha).
+ * A lista ocupa o espaço que sobra e rola na horizontal; no celular ela vai para baixo do card.
+ */
 .property__middle {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   gap: 12px;
   padding: 10px 0;
 }
 
+/* Desktop: até 600px (não estica); em janelas estreitas encolhe para a lista caber ao lado */
 .property__details {
-  flex: 1 1 0;
-  min-width: 600px;
+  flex: 0 1 600px;
+  min-width: 0;
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -714,8 +718,10 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
 }
 
+/* a foto encolhe (até 140px) antes do texto ficar estreito demais */
 .property__photo {
-  flex-shrink: 0;
+  flex: 0 1 280px;
+  min-width: 140px;
   width: 280px;
   height: 280px;
   border-radius: 8px;
@@ -738,11 +744,15 @@ a { color: inherit; text-decoration: none; }
 
 .property__info dt { color: var(--text-caption); }
 .property__info dd { color: #000; }
+.property__details .property__info { min-width: 120px; }
 
 .property__tenants {
+  flex: 1 1 0;
   display: flex;
   gap: 12px;
-  flex-shrink: 0;
+  min-width: 200px;
+  overflow-x: auto;
+  scrollbar-width: thin;
 }
 
 .tenant-mini {
@@ -1708,9 +1718,12 @@ td.tx__value { font-weight: 700; }
   color: var(--text-strong);
 }
 
+/* Botões de cancelar/confirmar sempre separados; se não couberem lado a lado, quebram a linha */
 .modal__footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
+  gap: 12px;
   padding: 0 20px 20px;
 }
 
@@ -2015,7 +2028,6 @@ td.tx__value { font-weight: 700; }
 
 /* Modal "Recuperar senha" */
 .forgot .modal__header { padding-bottom: 0; }
-.forgot .modal__footer { gap: 12px; }
 .forgot .btn-primary { justify-content: center; }
 .forgot__done { color: var(--text-strong); }
 
@@ -2185,14 +2197,18 @@ textarea.field__input {
   .houses img { width: 72px; height: 72px; }
   .finance__boxes { flex-direction: column; }
 
+  /* Celular: continua ocupando a largura toda */
   .property__details {
+    flex: 1 1 0;
     min-width: 0;
     flex-direction: column;
     height: auto;
   }
 
-  .property__photo { width: 100%; height: 220px; }
-  .property__tenants { width: 100%; overflow-x: auto; scrollbar-width: thin; }
+  /* Celular: a lista de inquilinos vai para a linha de baixo, ainda rolando na horizontal */
+  .property__middle { flex-wrap: wrap; }
+  .property__photo { flex: none; min-width: 0; width: 100%; height: 220px; }
+  .property__tenants { flex: 0 0 100%; width: 100%; min-width: 0; }
 
   .tenants-page { padding: 8px var(--gutter); }
 
