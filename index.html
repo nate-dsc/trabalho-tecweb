@@ -18,7 +18,13 @@
           <img src="assets/img/logo.png" alt="Logo" width="190" height="95">
         </div>
 
-        <nav class="nav">
+        <!-- Só aparece na navbar (telas abaixo de 450px) -->
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+          <span class="nav-toggle__icon" aria-hidden="true"></span>
+          Menu
+        </button>
+
+        <nav class="nav" id="menu-principal" aria-label="Menu principal">
           <div class="nav__section">Navegação</div>
           <a class="nav__item is-active" href="index.html" aria-current="page">
             <span class="nav__icon">
@@ -273,5 +279,6 @@
   <script src="assets/js/modal.js"></script>
   <script src="assets/js/demo.js"></script>
   <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/nav.js"></script>
 </body>
 </html>

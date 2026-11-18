@@ -27,6 +27,14 @@
 
   /* Margem lateral do conteúdo de todas as páginas (a mesma da lista de Inquilinos) */
   --gutter: 24px;
+
+  /*
+   * Barra lateral: 248px com janela de 860px ou mais, encolhendo de forma contínua até 180px
+   * em 450px. 180px é o mínimo para "Configurações" (o maior texto, ~92px) caber sem cortar.
+   * A logo encolhe na mesma proporção (190×95 → 138×69). Abaixo de 450px vira navbar.
+   */
+  --sidebar-w: clamp(180px, calc(180px + (100vw - 450px) * 68 / 410), 248px);
+  --logo-w: clamp(138px, calc(138px + (100vw - 450px) * 52 / 410), 190px);
 }
 
 /* ============ Base ============ */
@@ -73,7 +81,7 @@ a { color: inherit; text-decoration: none; }
 .sidebar {
   position: sticky;
   top: 12px;
-  flex: 0 0 248px;
+  flex: 0 0 var(--sidebar-w);
   height: calc(100vh - 24px);
   display: flex;
   flex-direction: column;
@@ -97,9 +105,65 @@ a { color: inherit; text-decoration: none; }
 }
 
 .sidebar__logo img {
-  width: 190px;
-  height: 95px;
+  width: var(--logo-w);
+  height: auto;
+  aspect-ratio: 2 / 1;
   object-fit: cover;
+}
+
+/* Botão "Menu": só aparece na navbar (abaixo de 450px) */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--text-nav-active);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Ícone ☰ desenhado em CSS; vira ✕ com o menu aberto */
+.nav-toggle__icon,
+.nav-toggle__icon::before,
+.nav-toggle__icon::after {
+  display: block;
+  width: 16px;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-toggle__icon { position: relative; }
+
+.nav-toggle__icon::before,
+.nav-toggle__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle__icon::before { top: -5px; }
+.nav-toggle__icon::after { top: 5px; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::before { transform: translateY(5px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::after { transform: translateY(-5px) rotate(-45deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle__icon,
+  .nav-toggle__icon::before,
+  .nav-toggle__icon::after { transition: none; }
 }
 
 .sidebar__footer { height: 133px; flex-shrink: 0; }
@@ -135,6 +199,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-nav);
   font-size: 13px;
   font-weight: 500;
+  white-space: nowrap;
   transition: background-color 0.15s ease;
 }
 
@@ -1365,6 +1430,7 @@ td.tx__value { font-weight: 700; }
   gap: 8px;
   width: 367px;
   max-width: 100%;
+  min-width: 0;
   padding: 4px 10px;
   border-radius: 18px;
   background: #f2f2f2;
@@ -2153,65 +2219,22 @@ textarea.field__input {
 }
 
 /* ============ Responsivo ============ */
-@media (max-width: 1100px) {
+/*
+ * Dois níveis:
+ * 1) Navegação, pela largura da janela: barra lateral encolhendo entre 860px e 450px
+ *    (--sidebar-w e --logo-w em :root) e navbar abaixo de 450px (@media no fim).
+ * 2) Conteúdo, pela largura da área principal (container queries em .main): cada bloco se
+ *    reorganiza quando o espaço que sobra para ele fica pequeno, com ou sem barra lateral.
+ *    Os números abaixo são larguras da área principal, não da janela.
+ */
+.main { container: main / inline-size; }
+
+@container main (max-width: 800px) {
   .tenant-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 860px) {
-  .app { flex-direction: column; align-items: stretch; }
-
-  .sidebar {
-    position: static;
-    flex: none;
-    height: auto;
-  }
-
-  .sidebar__footer { display: none; }
-
-  :root { --gutter: 4px; }
-
-  .page-title {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 24px var(--gutter) 16px;
-  }
-
-  .page-title__actions { width: 100%; flex-wrap: wrap; }
-  .search { flex: 1; width: auto; }
-
-  /* Header fixo mais baixo no celular: título menor e busca + botão na mesma linha */
-  .page-title--sticky { gap: 12px; padding: 16px var(--gutter) 12px; }
-  .page-title--sticky h1 { font-size: 32px; }
-  .page-title--sticky .page-title__actions { flex-wrap: nowrap; }
-  .page-title--sticky .search-form { flex: 1 1 0; min-width: 0; }
-  .page-title--sticky .search { width: 100%; min-width: 0; }
-  /* no celular a busca divide a linha com "Novo imóvel": o painel usa a largura toda do header */
-  .page-title--sticky .page-title__actions { position: relative; }
-  .page-title--sticky .search-form { position: static; }
-  .search-results { left: 0; width: auto; }
-  .property__title--sticky { top: var(--sticky-offset, 68px); }
-  /* No celular o header vem depois da barra lateral, então ele não "sobe": mantém o espaçamento normal */
-  .main:has(> .page-title--sticky) { margin-top: 0; }
-  .card__header { flex-wrap: wrap; }
-  .houses { flex-wrap: wrap; justify-content: center; }
-  .houses img { width: 72px; height: 72px; }
-  .finance__boxes { flex-direction: column; }
-
-  /* Celular: continua ocupando a largura toda */
-  .property__details {
-    flex: 1 1 0;
-    min-width: 0;
-    flex-direction: column;
-    height: auto;
-  }
-
-  /* Celular: a lista de inquilinos vai para a linha de baixo, ainda rolando na horizontal */
-  .property__middle { flex-wrap: wrap; }
-  .property__photo { flex: none; min-width: 0; width: 100%; height: 220px; }
-  .property__tenants { flex: 0 0 100%; width: 100%; min-width: 0; }
-
-  .tenants-page { padding: 8px var(--gutter); }
-
+/* Financeiro: os 3 resumos não cabem lado a lado; Documentos: destaque (600px) empilha */
+@container main (max-width: 660px) {
   .finance-summary { flex-direction: column; gap: 12px; }
 
   .doc-featured {
@@ -2223,6 +2246,47 @@ textarea.field__input {
   .doc-featured__preview { width: 100%; height: 200px; }
   .doc-featured__preview img { left: 50%; top: 25px; width: 122px; height: 150px; margin-left: -61px; }
   .docs-recent__cards { width: 100%; overflow-x: auto; scrollbar-width: thin; }
+}
+
+/* Grade de Inquilinos em 1 coluna */
+@container main (max-width: 580px) {
+  .tenant-grid { grid-template-columns: 1fr; }
+}
+
+/* Header compacto, Prédio A empilhado e lista de documentos sem as colunas Tipo/Caminho */
+@container main (max-width: 560px) {
+  .page-title {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px var(--gutter) 16px;
+  }
+
+  .page-title__actions { width: 100%; flex-wrap: wrap; }
+  .search { flex: 1; width: auto; }
+
+  /* Header fixo mais baixo: título menor e busca + botão na mesma linha */
+  .page-title--sticky { gap: 12px; padding: 16px var(--gutter) 12px; }
+  .page-title--sticky h1 { font-size: 32px; }
+  .page-title--sticky .page-title__actions { flex-wrap: nowrap; position: relative; }
+  .page-title--sticky .search-form { flex: 1 1 0; min-width: 0; position: static; }
+  .page-title--sticky .search { width: 100%; min-width: 0; }
+  /* a busca divide a linha com "Novo imóvel": o painel usa a largura toda do header */
+  .search-results { left: 0; width: auto; }
+
+  .card__header { flex-wrap: wrap; }
+  .houses img { width: 72px; height: 72px; }
+
+  /* Prédio A: card ocupa a largura toda e a lista de inquilinos vai para baixo (rolando na horizontal) */
+  .property__details {
+    flex: 1 1 0;
+    min-width: 0;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .property__middle { flex-wrap: wrap; }
+  .property__photo { flex: none; min-width: 0; width: 100%; height: 220px; }
+  .property__tenants { flex: 0 0 100%; width: 100%; min-width: 0; }
 
   .docs-toolbar { align-items: center; }
   .docs-search { flex: 1; width: auto; }
@@ -2231,12 +2295,82 @@ textarea.field__input {
   .doc-row { padding-left: 8px; }
   .doc-list:not(.doc-list--grid) .doc-row__type,
   .doc-list:not(.doc-list--grid) .doc-row__path { display: none; }
+
+  .help-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 640px) {
-  .tenant-grid { grid-template-columns: 1fr; }
-  .help-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .help-section { padding: 16px var(--gutter); }
+@container main (max-width: 480px) {
+  .finance__boxes { flex-direction: column; }
   .help-hero h2 { font-size: 26px; }
   .btn-secondary { white-space: normal; height: auto; }
+}
+
+/* Títulos de card/seção podem quebrar linha quando não há espaço (ex.: "Situação dos aluguéis") */
+@container main (max-width: 400px) {
+  .card__title { white-space: normal; }
+  .block__header { flex-wrap: wrap; white-space: normal; }
+}
+
+/* Com barra lateral perto do mínimo (janela de ~450–530px) a área principal fica bem estreita */
+@media (min-width: 450px) {
+  @container main (max-width: 400px) {
+    .main > * { --gutter: 12px; }
+    .page-title--sticky h1 { font-size: 26px; }
+  }
+
+  @container main (max-width: 340px) {
+    .help-grid { grid-template-columns: 1fr; }
+  }
+}
+
+/* ============ Navbar (celular: janela abaixo de 450px) ============ */
+@media (max-width: 449px) {
+  :root { --gutter: 4px; }
+
+  .app { flex-direction: column; align-items: stretch; }
+
+  /* A navbar fica acima do conteúdo, então o header da página não "sobe": espaçamento normal */
+  .main:has(> .page-title--sticky) { margin-top: 0; }
+
+  .tenants-page { padding: 8px var(--gutter); }
+  .help-section { padding: 16px var(--gutter); }
+
+  /* A barra lateral vira uma barra no topo: logo à esquerda e botão "Menu" à direita */
+  .sidebar {
+    position: relative;
+    top: auto;
+    z-index: 30;
+    flex: none;
+    height: auto;
+    padding: 8px 8px 8px 12px;
+    border-radius: 16px;
+    overflow: visible;
+  }
+
+  .sidebar__top {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .sidebar__logo { padding: 0; }
+  .sidebar__logo img { width: 88px; }
+  .sidebar__footer { display: none; }
+  .nav-toggle { display: inline-flex; }
+
+  /* A lista de páginas abre num painel logo abaixo da barra */
+  .nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    padding: 8px 16px 12px;
+    border-radius: 16px;
+    background: #e1e1e1;
+    box-shadow: 0 12px 32px rgba(17, 24, 39, 0.18);
+  }
+
+  .sidebar.is-open .nav { display: flex; }
 }
