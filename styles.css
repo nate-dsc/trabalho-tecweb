@@ -282,11 +282,6 @@ a { color: inherit; text-decoration: none; }
   white-space: nowrap;
 }
 
-.page-title p {
-  color: var(--text-muted);
-  font-size: 16px;
-}
-
 .page-title__actions {
   display: flex;
   align-items: center;
@@ -435,11 +430,11 @@ a { color: inherit; text-decoration: none; }
 .finance__label {
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .finance__value {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
 }
 
@@ -451,12 +446,12 @@ a { color: inherit; text-decoration: none; }
 
 .balance__label {
   color: var(--text-muted);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .balance__value {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
 }
 
@@ -502,7 +497,6 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700;
 }
 
-.block__title--sm { font-size: 16px; }
 
 .link {
   color: var(--link);
@@ -740,6 +734,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Desktop: até 600px (não estica); em janelas estreitas encolhe para a lista caber ao lado */
 .property__details {
+  container: details / inline-size;
   flex: 0 1 600px;
   min-width: 0;
   display: flex;
@@ -752,10 +747,10 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
 }
 
-/* a foto encolhe (até 140px) antes do texto ficar estreito demais */
+/* a foto encolhe (e some com o card até 400px) para o texto manter os 230px de que precisa */
 .property__photo {
   flex: 0 1 280px;
-  min-width: 140px;
+  min-width: 0;
   width: 280px;
   height: 280px;
   border-radius: 8px;
@@ -766,7 +761,7 @@ a { color: inherit; text-decoration: none; }
   flex: 1 1 0;
   min-width: 0;
   margin: 0;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -778,7 +773,7 @@ a { color: inherit; text-decoration: none; }
 
 .property__info dt { color: var(--text-caption); }
 .property__info dd { color: #000; }
-.property__details .property__info { min-width: 120px; }
+.property__details .property__info { min-width: 230px; }
 
 .property__tenants {
   flex: 1 1 0;
@@ -817,15 +812,15 @@ a { color: inherit; text-decoration: none; }
 
 .tenant-mini h3 {
   padding: 8px 10px 4px;
-  color: #000;
-  font-size: 12px;
-  font-weight: 600;
+  color: var(--text-strong);
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .tenant-mini p {
   padding: 2px 12px 4px 10px;
-  color: var(--text-caption);
-  font-size: 10px;
+  color: var(--text-muted);
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -846,11 +841,6 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-strong);
   font-size: 18px;
   font-weight: 700;
-}
-
-.property__section-header p {
-  color: var(--text-muted);
-  font-size: 14px;
 }
 
 /* Cards de contas: no Figma a linha transborda; aqui ela rola na horizontal */
@@ -888,7 +878,7 @@ a { color: inherit; text-decoration: none; }
 .bill__header h4 {
   margin: 0;
   color: #000;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -933,7 +923,7 @@ a { color: inherit; text-decoration: none; }
 
 .bill__total strong {
   color: var(--text-strong);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -1014,7 +1004,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 50%;
   background: #d1d5db;
   color: var(--text-muted);
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
 }
 
@@ -1155,7 +1145,8 @@ a { color: inherit; text-decoration: none; }
 
 .stat__label {
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .stat__value {
@@ -1286,17 +1277,17 @@ td.tx__value { font-weight: 700; }
 
 .doc-featured__details {
   flex: 1 1 0;
-  min-width: 260px; /* o texto precisa de ~250px para caber nos 300px de altura sem esconder nada */
+  min-width: 290px; /* com o texto em 12px, abaixo disso o caminho quebra linha e não cabe nos 300px */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
 }
 
 .doc-featured__title {
   padding: 8px 10px 4px;
   color: #000;
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .doc-featured__info {
@@ -1416,7 +1407,7 @@ td.tx__value { font-weight: 700; }
   height: 24px;
   padding: 0 2px 0 24px;
   color: var(--text-caption);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -1456,7 +1447,7 @@ td.tx__value { font-weight: 700; }
   margin: 0;
   padding: 17px 0 8px 4px;
   color: var(--text-caption);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -1508,7 +1499,7 @@ td.tx__value { font-weight: 700; }
 .doc-list--grid .doc-row__path {
   flex: none;
   min-width: 0;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 /* ============ Página Ajuda ============ */
@@ -1680,7 +1671,7 @@ td.tx__value { font-weight: 700; }
   border-radius: 16px;
   background: transparent;
   color: var(--text-muted);
-  font-size: 22px;
+  font-size: 18px;
   line-height: 1;
   cursor: pointer;
 }
@@ -1741,7 +1732,7 @@ td.tx__value { font-weight: 700; }
 
 .avatar--profile {
   background: var(--surface-muted);
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .settings__fields {
@@ -2196,12 +2187,16 @@ textarea.field__input {
 }
 
 /*
- * Documentos, "Recentes", lado a lado: se sobrar pouco para a prévia (card com até 360px),
- * ela some e o texto usa o card inteiro — uma prévia com poucos pixels não mostraria nada.
+ * Lado a lado (Documentos "Recentes" e Prédio A): se sobrar pouco para a prévia/foto (card com
+ * até 420px/400px), ela some e o texto usa o card inteiro — poucos pixels não mostrariam nada.
  */
 @container main (width > 560px) {
-  @container featured (max-width: 360px) {
+  @container featured (max-width: 420px) {
     .doc-featured__preview { display: none; }
+  }
+
+  @container details (max-width: 400px) {
+    .property__photo { display: none; }
   }
 }
 
