@@ -561,7 +561,7 @@ a { color: inherit; text-decoration: none; }
 
 /*
  * Etiqueta de situação ou tipo — mesmo formato e mesmas cores em qualquer card.
- * Tons escolhidos para o texto branco ter contraste de pelo menos 4,5:1.
+ * Cores de sistema da Apple (Human Interface Guidelines, Default light).
  */
 .chip {
   display: inline-flex;
@@ -575,30 +575,38 @@ a { color: inherit; text-decoration: none; }
   white-space: nowrap;
 }
 
-.chip--late { background: #dc2626; }    /* Atrasado */
-.chip--pending { background: #c2410c; } /* Pendente */
-.chip--paid { background: #15803d; }    /* Pago */
-.chip--recent { background: #0066cc; }  /* Mais recente */
-.chip--type { background: #727272; }    /* tipo de documento: Comprovante, Laudo */
+.chip--late { background: #ff383c; }    /* Atrasado — systemRed */
+.chip--pending { background: #ff8d28; } /* Pendente — systemOrange */
+.chip--paid { background: #34c759; }    /* Pago — systemGreen */
+.chip--recent { background: #0088ff; }  /* Mais recente — systemBlue */
 
-/* Card de documento (Dashboard e Documentos): etiqueta e ícone na prévia; informações em cinza, sem sombra */
+/*
+ * Card de documento (Dashboard e Documentos), sem borda nem sombra:
+ * prévia e informações dividem a altura meio a meio (150px cada); informações em cinza.
+ */
 .doc {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--border);
   background: #f2f2f2;
 }
 
-/* etiqueta no topo, a 8px da borda (como nos outros cards), com o ícone logo abaixo */
+/* etiqueta (se houver) no topo, a 8px da borda; ícone sempre no centro da prévia, com ou sem etiqueta */
 .doc__preview {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  height: 88px;
+  height: 150px;
   flex-shrink: 0;
-  padding: 7px 16px 8px; /* 7px + 1px de borda do card = etiqueta a 8px do topo */
+  padding: 8px 16px;
   background: var(--surface-preview);
+}
+
+.doc__preview .doc__file {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .doc__file {
@@ -613,6 +621,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .doc__info {
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -851,14 +861,13 @@ a { color: inherit; text-decoration: none; }
   scrollbar-width: none;
 }
 
-/* Card de contas do mês (Imóveis) — etiqueta no topo, a 8px da borda */
+/* Card de contas do mês (Imóveis) — sem borda, fundo cinza como os outros cards; etiqueta a 8px do topo */
 .bill {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 7px 16px 16px; /* 7px + 1px de borda = etiqueta a 8px do topo */
-  border: 1px solid var(--border);
-  background: var(--surface);
+  padding: 8px 16px 16px;
+  background: #f2f2f2;
 }
 
 .bill__top {
@@ -935,7 +944,9 @@ a { color: inherit; text-decoration: none; }
   gap: 8px;
 }
 
-.bill__link {
+/* "Ver detalhes" das contas e "Abrir em nova guia" do documento em destaque: mesmo estilo de link */
+.bill__link,
+.card-link {
   padding: 0;
   border: 0;
   background: none;
@@ -943,10 +954,18 @@ a { color: inherit; text-decoration: none; }
   font: inherit;
   font-size: 13px;
   font-weight: 600;
+  white-space: nowrap;
   cursor: pointer;
 }
 
-.bill__link:hover { text-decoration: underline; }
+.bill__link:hover,
+.card-link:hover { text-decoration: underline; }
+
+.card-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 
 /* ============ Página Inquilinos ============ */
 .main--spaced { gap: 16px; }
@@ -1292,19 +1311,6 @@ td.tx__value { font-weight: 700; }
   justify-content: center;
   padding-bottom: 8px;
 }
-
-.chip-button {
-  padding: 4px 8px;
-  border-radius: 18px;
-  background: var(--text-caption);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-  white-space: nowrap;
-  transition: background-color 0.15s ease;
-}
-
-.chip-button:hover { background: #5e5e5e; }
 
 .docs-recent__cards {
   flex: 1 1 0;
