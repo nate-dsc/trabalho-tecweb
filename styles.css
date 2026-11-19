@@ -2287,27 +2287,54 @@ textarea.field__input {
 
 /* ============ Navbar (celular: janela abaixo de 450px) ============ */
 @media (max-width: 449px) {
-  :root { --gutter: 4px; }
+  :root { --gutter: 4px; --navbar-h: 60px; }
 
   .app { flex-direction: column; align-items: stretch; }
 
   /* A navbar fica acima do conteúdo, então o header da página não "sobe": espaçamento normal */
   .main:has(> .page-title--sticky) { margin-top: 0; }
 
+  /* O header da página fica preso logo abaixo da navbar (12px de margem + barra + 12px) */
+  .page-title--sticky { top: calc(var(--navbar-h) + 24px); }
+
+  /* botão do header um pouco mais justo, para "Inquilinos" caber inteiro ao lado dele em 320px */
+  .page-title--sticky { gap: 8px; }
+  .page-title--sticky .btn-primary { gap: 6px; padding: 10px 12px; }
+
+  /* Títulos menores no celular: página 24px, seções 20px */
+  .page-title--sticky h1 { font-size: 24px; }
+  .property__title,
+  .help-hero h2 { font-size: 20px; }
+
   .tenants-page { padding: 8px var(--gutter); }
   .help-section { padding: 16px var(--gutter); }
 
-  /* A barra lateral vira uma barra no topo: logo à esquerda e botão "Menu" à direita */
+  /*
+   * A barra lateral vira uma barra no topo, sempre visível: logo à esquerda e botão "Menu" à
+   * direita. Um fundo branco atrás dela cobre a margem em volta, para o conteúdo não aparecer ao rolar.
+   */
   .sidebar {
-    position: relative;
-    top: auto;
+    position: sticky;
+    top: 12px;
     z-index: 30;
     flex: none;
-    height: auto;
+    height: var(--navbar-h);
+    background: none;
     padding: 8px 8px 8px 12px;
     border-radius: 16px;
     overflow: visible;
   }
+
+  /* camadas: branco cobrindo a margem (atrás) e o cinza da barra, opaco (#e1e1e1 = o cinza translúcido sobre branco) */
+  .sidebar::before,
+  .sidebar::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .sidebar::before { inset: -12px; z-index: -2; background: var(--surface); }
+  .sidebar::after { inset: 0; z-index: -1; border-radius: inherit; background: #e1e1e1; }
 
   .sidebar__top {
     flex-direction: row;

@@ -1,8 +1,8 @@
 /*
  * Títulos de seção fixos abaixo do header principal (página Imóveis).
  *
- * - Mede a altura do header fixo e guarda em --sticky-offset, para o título da seção
- *   parar exatamente embaixo dele (a altura muda no celular e com a fonte carregada).
+ * - Mede onde termina o header fixo (altura + distância do topo, que no celular inclui a
+ *   navbar) e guarda em --sticky-offset, para o título da seção parar exatamente embaixo dele.
  * - Marca com .is-stuck o título que está preso no topo, para desenhar uma linha embaixo dele.
  *
  * O "ficar preso" em si é CSS (position: sticky); sem JavaScript continua funcionando,
@@ -20,7 +20,8 @@
   var scheduled = false;
 
   function measure() {
-    offset = header.getBoundingClientRect().height;
+    // No celular o header fica preso abaixo da navbar: soma a distância dele até o topo
+    offset = header.getBoundingClientRect().height + (parseFloat(getComputedStyle(header).top) || 0);
     root.style.setProperty('--sticky-offset', offset + 'px');
     update();
   }
@@ -45,9 +46,9 @@
 
   if ('ResizeObserver' in window) {
     new ResizeObserver(measure).observe(header);
-  } else {
-    window.addEventListener('resize', measure);
   }
+  // a distância do topo muda ao cruzar 450px (com e sem navbar), sem mudar a altura do header
+  window.addEventListener('resize', measure);
   window.addEventListener('scroll', onScroll, { passive: true });
   measure();
 })();

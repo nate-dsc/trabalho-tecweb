@@ -52,7 +52,7 @@
       window.scrollTo(0, 0);
     } else {
       // "Recentes" volta acima: rola até "Todos os documentos" para a busca continuar à vista
-      var offset = header ? header.getBoundingClientRect().height : 0;
+      var offset = header ? header.getBoundingClientRect().height + (parseFloat(getComputedStyle(header).top) || 0) : 0;
       window.scrollTo(0, all.getBoundingClientRect().top + window.pageYOffset - offset);
     }
   }
