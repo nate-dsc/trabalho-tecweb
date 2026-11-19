@@ -68,9 +68,18 @@
     var amount = Demo.formatMoney(Demo.parseMoney($('pagamento-valor').value));
     var date = $('pagamento-data').value.split('-').reverse().join('/');
     var tag = card.querySelector('.chip');
-    tag.className = 'chip chip--paid';
-    tag.textContent = 'Pago';
     dialog.close();
+    // o status muda depois que o modal começa a sair, com um pulso, para a mudança ser vista no card
+    setTimeout(function () {
+      tag.className = 'chip chip--paid';
+      tag.textContent = 'Pago';
+      if (tag.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        tag.animate(
+          [{ transform: 'scale(1)' }, { transform: 'scale(1.18)', offset: 0.4 }, { transform: 'scale(1)' }],
+          { duration: 420, easing: 'ease-out' }
+        );
+      }
+    }, 150);
     Demo.toast('Pagamento de ' + amount + ' de ' + name + ' registrado em ' + date +
       '. Nesta demonstração ele não fica salvo.');
   });

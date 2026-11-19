@@ -8,7 +8,8 @@
  *         </nav>
  *
  * Todos os itens ficam no HTML; o script só esconde os que não são da página atual.
- * Sem JavaScript, a lista aparece inteira.
+ * Sem JavaScript, a lista aparece inteira. Ao trocar de página, os itens novos surgem com um fade
+ * curto em sequência (desligado com "reduzir movimento").
  */
 (function () {
   'use strict';
@@ -60,7 +61,7 @@
     }
     controls.appendChild(next);
 
-    function render(page) {
+    function render(page, animate) {
       current = Math.min(Math.max(page, 1), totalPages);
       var first = (current - 1) * pageSize;
       var last = Math.min(first + pageSize, items.length);
@@ -68,6 +69,15 @@
       items.forEach(function (item, index) {
         item.hidden = index < first || index >= last;
       });
+
+      if (animate && list.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        items.slice(first, last).forEach(function (item, index) {
+          item.animate(
+            { opacity: [0, 1], transform: ['translateY(6px)', 'none'] },
+            { duration: 200, delay: index * 25, easing: 'cubic-bezier(0.2, 0, 0, 1)', fill: 'backwards' }
+          );
+        });
+      }
 
       pageButtons.forEach(function (btn, index) {
         var isCurrent = index + 1 === current;
@@ -84,9 +94,10 @@
     controls.addEventListener('click', function (event) {
       var btn = event.target.closest('button');
       if (!btn || btn.disabled) return;
-      if (btn === prev) render(current - 1);
-      else if (btn === next) render(current + 1);
-      else if (btn.dataset.page) render(parseInt(btn.dataset.page, 10));
+      var before = current;
+      if (btn === prev) render(current - 1, true);
+      else if (btn === next) render(current + 1, true);
+      else if (btn.dataset.page && parseInt(btn.dataset.page, 10) !== before) render(parseInt(btn.dataset.page, 10), true);
     });
 
     render(1);

@@ -8,6 +8,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!-- Vindo do login: o conteúdo entra com um fade (a classe precisa existir antes da primeira pintura) -->
+  <script>
+    try {
+      if (sessionStorage.getItem('gi-chegada')) {
+        sessionStorage.removeItem('gi-chegada');
+        document.documentElement.classList.add('is-arriving');
+      }
+    } catch (e) { /* sem armazenamento: abre normalmente */ }
+  </script>
 </head>
 <body>
   <div class="app">
@@ -248,7 +257,6 @@
     <form id="form-novo-aluguel" data-demo-form>
       <div class="modal__header">
         <h2 class="modal__title" id="modal-novo-aluguel-title">Novo aluguel</h2>
-        <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
       </div>
       <div class="modal__body">
         <p>Registre um novo contrato de aluguel entre um imóvel e um inquilino. Nesta demonstração ele não fica salvo.</p>

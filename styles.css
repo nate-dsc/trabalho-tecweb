@@ -573,6 +573,7 @@ a { color: inherit; text-decoration: none; }
  * Cores de sistema da Apple (Human Interface Guidelines, Default light).
  */
 .chip {
+  transition: background-color 0.3s ease;
   display: inline-flex;
   align-items: center;
   padding: 4px 8px;
@@ -1055,6 +1056,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .tenant-card__row span { color: var(--text-muted); }
+/* a etiqueta de status (no modal de detalhes) mantém o texto branco */
+.tenant-card__row .chip { color: #fff; }
 
 .tenant-card__row strong {
   color: var(--text-strong);
@@ -1624,17 +1627,37 @@ td.tx__value { font-weight: 700; }
   box-shadow: 0 20px 48px rgba(17, 24, 39, 0.18);
 }
 
-.modal::backdrop { background: rgba(17, 24, 39, 0.4); }
+/*
+ * Abrir e fechar com fade e leve escala. "display" e "overlay" em allow-discrete mantêm o modal
+ * na tela até a saída terminar, valha o fechamento por botão, Esc ou script.
+ * Navegadores sem suporte continuam abrindo e fechando na hora.
+ */
+.modal {
+  transition: opacity 0.18s ease-out, transform 0.18s ease-out,
+    overlay 0.18s ease-out allow-discrete, display 0.18s ease-out allow-discrete;
+}
 
-.modal[open] { animation: modal-in 0.18s ease-out; }
+.modal:not([open]) { opacity: 0; transform: translateY(8px) scale(0.98); }
 
-@keyframes modal-in {
-  from { opacity: 0; transform: translateY(8px) scale(0.98); }
-  to { opacity: 1; transform: none; }
+@starting-style {
+  .modal[open] { opacity: 0; transform: translateY(8px) scale(0.98); }
+}
+
+.modal::backdrop {
+  background: rgba(17, 24, 39, 0.4);
+  transition: background-color 0.18s ease-out,
+    overlay 0.18s ease-out allow-discrete, display 0.18s ease-out allow-discrete;
+}
+
+.modal:not([open])::backdrop { background-color: transparent; }
+
+@starting-style {
+  .modal[open]::backdrop { background-color: transparent; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .modal[open] { animation: none; }
+  .modal,
+  .modal::backdrop { transition: none; }
   .faq__chevron { transition: none; }
 }
 
@@ -1650,24 +1673,6 @@ td.tx__value { font-weight: 700; }
   font-size: 18px;
   font-weight: 700;
 }
-
-.modal__close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: 0;
-  border-radius: 16px;
-  background: transparent;
-  color: var(--text-muted);
-  font-size: 18px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.modal__close:hover { background: var(--surface-muted); }
 
 .modal__body {
   display: flex;
@@ -2008,6 +2013,7 @@ td.tx__value { font-weight: 700; }
   color: #dc2626;
   font-size: 12px;
   line-height: 1.4;
+  overflow: hidden; /* a mensagem entra crescendo a altura (demo.js) */
 }
 
 select.field__input { cursor: pointer; }
@@ -2069,6 +2075,9 @@ textarea.field__input {
 
 @media (prefers-reduced-motion: reduce) {
   .toast { animation: none; transition: none; }
+  .search-results,
+  .nav,
+  .chip { transition: none; }
 }
 
 /* Busca do Dashboard */
@@ -2087,6 +2096,14 @@ textarea.field__input {
   border-radius: 12px;
   background: var(--surface);
   box-shadow: 0 12px 32px rgba(17, 24, 39, 0.12);
+  transition: opacity 0.16s ease-out, transform 0.16s ease-out, display 0.16s ease-out allow-discrete;
+}
+
+/* o painel desliza um pouco para baixo ao aparecer e some do mesmo jeito */
+.search-results[hidden] { display: none; opacity: 0; transform: translateY(-4px); }
+
+@starting-style {
+  .search-results:not([hidden]) { opacity: 0; transform: translateY(-4px); }
 }
 
 .search-results a {
@@ -2359,7 +2376,111 @@ textarea.field__input {
     border-radius: 16px;
     background: #e1e1e1;
     box-shadow: 0 12px 32px rgba(17, 24, 39, 0.18);
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.16s ease-out, transform 0.16s ease-out, display 0.16s ease-out allow-discrete;
   }
 
-  .sidebar.is-open .nav { display: flex; }
+  .sidebar.is-open .nav { display: flex; opacity: 1; transform: none; }
+
+  @starting-style {
+    .sidebar.is-open .nav { opacity: 0; transform: translateY(-6px); }
+  }
+}
+
+/* ============ Entrada: do login para o Dashboard ============ */
+/*
+ * Ao clicar em "Entrar" (login.js), uma chuva de moedas e notas cai sobre a tela enquanto o
+ * mascote pula no centro; em seguida o Dashboard abre com um fade. Com "reduzir movimento",
+ * vai direto para o Dashboard.
+ */
+.money-rain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  animation: money-fade-in 0.25s ease-out;
+  pointer-events: none;
+}
+
+.money-rain__mascot {
+  width: 220px;
+  height: auto;
+  animation: money-jump 0.6s cubic-bezier(0.3, 1.6, 0.5, 1) both, money-wiggle 0.5s ease-in-out 0.6s 2;
+}
+
+.money-rain__text {
+  color: var(--text-strong);
+  font-size: 18px;
+  font-weight: 700;
+  animation: money-fade-in 0.3s ease-out 0.25s both;
+}
+
+.money-rain__item {
+  position: absolute;
+  top: -60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  line-height: 1;
+  animation: money-fall linear both;
+}
+
+.money-rain__coin {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #c99a06;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffe680, #f5c518 60%, #d9a40b);
+  color: #8a6400;
+  font-size: 15px;
+}
+
+.money-rain__bill {
+  width: 52px;
+  height: 26px;
+  border: 2px solid #1f7a3d;
+  border-radius: 4px;
+  background: #34c759;
+  color: #fff;
+  font-size: 11px;
+}
+
+@keyframes money-fall {
+  to { transform: translate(var(--drift, 0px), calc(100vh + 120px)) rotate(var(--spin, 360deg)); }
+}
+
+@keyframes money-jump {
+  from { opacity: 0; transform: translateY(40px) scale(0.6); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes money-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-6deg); }
+  75% { transform: rotate(6deg); }
+}
+
+@keyframes money-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Dashboard logo depois do login: o conteúdo aparece subindo de leve */
+.is-arriving .app { animation: arrive 0.4s cubic-bezier(0.2, 0, 0, 1); }
+
+@keyframes arrive {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-arriving .app { animation: none; }
 }

@@ -63,12 +63,20 @@
 
   function setError(input, message) {
     var field = input.closest('.field');
+    var isNew = !!message && !errorElement(input, false);
     var el = errorElement(input, !!message);
     if (field) field.classList.toggle('field--invalid', !!message);
     if (message) {
       el.textContent = message;
       input.setAttribute('aria-invalid', 'true');
       input.setAttribute('aria-describedby', el.id);
+      // mensagem nova abre espaço aos poucos, em vez de empurrar o formulário de uma vez
+      if (isNew && el.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        el.animate(
+          { height: ['0px', el.offsetHeight + 'px'], opacity: [0, 1] },
+          { duration: 160, easing: 'cubic-bezier(0.2, 0, 0, 1)' }
+        );
+      }
     } else {
       if (el) el.remove();
       input.removeAttribute('aria-invalid');
