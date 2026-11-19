@@ -75,7 +75,7 @@
         <h1>Documentos</h1>
       </header>
 
-      <div class="docs-page">
+      <div class="docs-page" id="docs-page">
         <!-- Recentes -->
         <section class="docs-recent">
           <h2 class="property__title property__title--sticky">Recentes</h2>
@@ -147,16 +147,16 @@
           <hr class="docs-all__separator">
 
           <div class="docs-toolbar">
-            <label class="docs-search">
+            <label class="search docs-search">
+              <img src="assets/icons/search.svg" alt="" width="24" height="24">
               <input type="search" id="docs-search" placeholder="Pesquisar um documento" aria-label="Pesquisar um documento" autocomplete="off">
-              <img src="assets/icons/search.svg" alt="" width="16" height="16">
             </label>
             <div class="view-toggle" role="group" aria-label="Modo de exibição">
               <button class="view-toggle__btn" type="button" data-view="grid" aria-pressed="false" aria-label="Exibir em grade">
-                <img src="assets/icons/grid.svg" alt="" width="16" height="16">
+                <img src="assets/icons/grid.svg" alt="" width="20" height="20">
               </button>
               <button class="view-toggle__btn is-active" type="button" data-view="list" aria-pressed="true" aria-label="Exibir em lista">
-                <img src="assets/icons/list.svg" alt="" width="16" height="16">
+                <img src="assets/icons/list.svg" alt="" width="20" height="20">
               </button>
             </div>
           </div>

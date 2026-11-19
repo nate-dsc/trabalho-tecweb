@@ -1,5 +1,6 @@
 /*
  * Página Documentos: busca na lista e alternância entre lista e grade.
+ * Durante a busca, "Recentes" some e "Todos os documentos" fica no topo da página.
  */
 (function () {
   'use strict';
@@ -8,6 +9,9 @@
   var search = document.getElementById('docs-search');
   var empty = document.getElementById('docs-empty');
   var toggles = document.querySelectorAll('.view-toggle__btn');
+  var page = document.getElementById('docs-page');
+  var all = document.querySelector('.docs-all');
+  var header = document.querySelector('.page-title--sticky');
   if (!list || !search) return;
 
   var groups = Array.prototype.slice.call(list.querySelectorAll('.doc-group'));
@@ -38,6 +42,19 @@
     });
 
     empty.hidden = anyVisible;
+    setSearching(query !== '');
+  }
+
+  function setSearching(on) {
+    if (!page || page.classList.contains('is-searching') === on) return;
+    page.classList.toggle('is-searching', on);
+    if (on) {
+      window.scrollTo(0, 0);
+    } else {
+      // "Recentes" volta acima: rola até "Todos os documentos" para a busca continuar à vista
+      var offset = header ? header.getBoundingClientRect().height : 0;
+      window.scrollTo(0, all.getBoundingClientRect().top + window.pageYOffset - offset);
+    }
   }
 
   function setView(view) {
