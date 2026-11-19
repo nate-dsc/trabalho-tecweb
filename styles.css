@@ -983,10 +983,12 @@ a { color: inherit; text-decoration: none; }
   flex-direction: column;
   gap: 12px;
   padding: 16px;
-  border: 1px solid var(--border);
   border-radius: 14px;
-  background: var(--surface);
+  background: #f2f2f2;
 }
+
+/* no card cinza, o círculo das iniciais fica branco (inverso dos cards brancos) */
+.tenant-card .avatar { background: #fff; }
 
 .tenant-card__header {
   display: flex;
