@@ -83,9 +83,9 @@
             </label>
             <div class="search-results" id="busca-resultados" hidden></div>
           </form>
-          <button class="btn-primary" type="button" data-modal="modal-novo-imovel" aria-haspopup="dialog">
+          <button class="btn-primary" type="button" data-modal="modal-novo-aluguel" aria-haspopup="dialog">
             <img src="assets/icons/plus.svg" alt="" width="16" height="16">
-            Novo imóvel
+            Novo aluguel
           </button>
         </div>
       </header>
@@ -239,40 +239,60 @@
     </main>
   </div>
 
-  <!-- Novo imóvel (demonstração) -->
-  <dialog class="modal" id="modal-novo-imovel" aria-labelledby="modal-novo-imovel-title">
-    <form id="form-novo-imovel" data-demo-form>
+
+  <!-- Novo aluguel (demonstração) -->
+  <dialog class="modal" id="modal-novo-aluguel" aria-labelledby="modal-novo-aluguel-title">
+    <form id="form-novo-aluguel" data-demo-form>
       <div class="modal__header">
-        <h2 class="modal__title" id="modal-novo-imovel-title">Novo imóvel</h2>
+        <h2 class="modal__title" id="modal-novo-aluguel-title">Novo aluguel</h2>
         <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
       </div>
       <div class="modal__body">
-        <p>Informe o endereço e as condições do aluguel. Nesta demonstração o imóvel não fica salvo.</p>
+        <p>Registre um novo contrato de aluguel entre um imóvel e um inquilino. Nesta demonstração ele não fica salvo.</p>
         <label class="field">
-          <span class="field__label">Endereço</span>
-          <input class="field__input" id="imovel-endereco" type="text" placeholder="Ex.: Rua das Flores, 45, apto 201" required minlength="5" autofocus autocomplete="street-address" data-message-length="Informe o endereço completo, com rua e número.">
+          <span class="field__label">Imóvel</span>
+          <select class="field__input" id="aluguel-imovel" required autofocus data-message-required="Escolha o imóvel alugado.">
+            <option value="">Selecione</option>
+            <option>Prédio A, apartamento 1507</option>
+            <option>Prédio A, apartamento 1508</option>
+            <option>Av. Champs-Élysées, 71</option>
+            <option>Megaprédio H7, apartamento 7223</option>
+            <option>Rua das Flores, 12</option>
+            <option>Rua do Sol, 88</option>
+            <option>Av. Beira-Mar, 1500, apartamento 902</option>
+            <option>Rua Padre Ibiapina, 310</option>
+          </select>
         </label>
         <label class="field">
-          <span class="field__label">Tipo</span>
-          <select class="field__input" id="imovel-tipo" required>
+          <span class="field__label">Inquilino</span>
+          <select class="field__input" id="aluguel-inquilino" required data-message-required="Escolha o inquilino.">
             <option value="">Selecione</option>
-            <option>Apartamento</option>
-            <option>Casa</option>
-            <option>Sala comercial</option>
+            <option>Alexey H.M.S.</option>
+            <option>Ana Souza</option>
+            <option>Carlos Mendes</option>
+            <option>Gabriel Gabé</option>
+            <option>Joi de Armas</option>
+            <option>Marina Lopes</option>
+            <option>Rafael Nunes</option>
+            <option>S.M.H. Yexela</option>
           </select>
         </label>
         <label class="field">
           <span class="field__label">Aluguel mensal (R$)</span>
-          <input class="field__input" id="imovel-aluguel" type="text" inputmode="decimal" placeholder="Ex.: 1.500,00" required data-money data-message-min="Informe um aluguel maior que zero.">
+          <input class="field__input" id="aluguel-valor" type="text" inputmode="decimal" placeholder="Ex.: 1.500,00" required data-money data-message-min="Informe um aluguel maior que zero.">
+        </label>
+        <label class="field">
+          <span class="field__label">Início do contrato</span>
+          <input class="field__input" id="aluguel-inicio" type="date" required data-message-required="Informe a data de início do contrato." data-message-bad="Informe uma data válida.">
         </label>
         <label class="field">
           <span class="field__label">Dia de vencimento</span>
-          <input class="field__input" id="imovel-dia" type="number" inputmode="numeric" min="1" max="28" step="1" placeholder="De 1 a 28" required data-message-min="Escolha um dia entre 1 e 28." data-message-max="Escolha um dia entre 1 e 28." data-message-step="Use um dia inteiro, entre 1 e 28." data-message-bad="Use um dia inteiro, entre 1 e 28.">
+          <input class="field__input" id="aluguel-dia" type="number" inputmode="numeric" min="1" max="28" step="1" placeholder="De 1 a 28" required data-message-min="Escolha um dia entre 1 e 28." data-message-max="Escolha um dia entre 1 e 28." data-message-step="Use um dia inteiro, entre 1 e 28." data-message-bad="Use um dia inteiro, entre 1 e 28.">
         </label>
       </div>
       <div class="modal__footer">
         <button class="btn-secondary" type="button" data-close>Cancelar</button>
-        <button class="btn-primary" type="submit">Cadastrar imóvel</button>
+        <button class="btn-primary" type="submit">Registrar aluguel</button>
       </div>
     </form>
   </dialog>

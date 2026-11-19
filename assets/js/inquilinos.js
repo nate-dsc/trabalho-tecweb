@@ -1,9 +1,25 @@
 /*
- * Inquilinos: "Ver detalhes →" com os dados do inquilino e registro de pagamento (demonstração).
+ * Inquilinos: cadastro de novo inquilino e "Ver detalhes →" com os dados do inquilino e registro de
+ * pagamento (demonstração, sem backend).
  */
 (function () {
   'use strict';
 
+  /* ---------- Novo inquilino ---------- */
+  var newForm = document.getElementById('form-novo-inquilino');
+  if (newForm) {
+    newForm.addEventListener('demo:valid', function (event) {
+      event.preventDefault();
+      var name = document.getElementById('inquilino-nome').value.trim();
+      var phone = document.getElementById('inquilino-telefone').value.trim();
+      var place = document.getElementById('inquilino-imovel').value;
+      newForm.closest('dialog').close();
+      Demo.toast('Inquilino cadastrado: ' + name + ', telefone ' + phone + (place ? ', em ' + place : '') +
+        '. Nesta demonstração ele não fica salvo.');
+    });
+  }
+
+  /* ---------- Detalhes e pagamento ---------- */
   var dialog = document.getElementById('modal-inquilino');
   if (!dialog) return;
   var $ = function (id) { return document.getElementById(id); };

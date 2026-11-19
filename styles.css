@@ -2232,7 +2232,10 @@ textarea.field__input {
   .page-title--sticky .page-title__actions { flex-wrap: nowrap; position: relative; }
   .page-title--sticky .search-form { flex: 1 1 0; min-width: 0; position: static; }
   .page-title--sticky .search { width: 100%; min-width: 0; }
-  /* a busca divide a linha com "Novo imóvel": o painel usa a largura toda do header */
+  /* sem busca (Imóveis, Inquilinos), o botão cabe ao lado do título */
+  .page-title--sticky:not(:has(.search-form)) { flex-direction: row; align-items: center; }
+  .page-title--sticky:not(:has(.search-form)) .page-title__actions { width: auto; }
+  /* a busca divide a linha com "Novo aluguel": o painel usa a largura toda do header */
   .search-results { left: 0; width: auto; }
 
   .houses img { width: 72px; height: 72px; }

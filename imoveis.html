@@ -72,7 +72,15 @@
     <!-- Principal -->
     <main class="main">
       <header class="page-title page-title--plain page-title--sticky page-title--strong">
-        <h1>Imóveis</h1>
+        <div class="page-title__text">
+          <h1>Imóveis</h1>
+        </div>
+        <div class="page-title__actions">
+          <button class="btn-primary" type="button" data-modal="modal-novo-imovel" aria-haspopup="dialog">
+            <img src="assets/icons/plus.svg" alt="" width="16" height="16">
+            Novo imóvel
+          </button>
+        </div>
       </header>
 
       <div class="properties">
@@ -291,6 +299,44 @@
     <div class="modal__footer" id="conta-rodape-pago">
       <button class="btn-primary" type="button" data-close>Fechar</button>
     </div>
+  </dialog>
+
+  <!-- Novo imóvel (demonstração) -->
+  <dialog class="modal" id="modal-novo-imovel" aria-labelledby="modal-novo-imovel-title">
+    <form id="form-novo-imovel" data-demo-form>
+      <div class="modal__header">
+        <h2 class="modal__title" id="modal-novo-imovel-title">Novo imóvel</h2>
+        <button class="modal__close" type="button" data-close aria-label="Fechar">×</button>
+      </div>
+      <div class="modal__body">
+        <p>Informe o endereço e as condições do aluguel. Nesta demonstração o imóvel não fica salvo.</p>
+        <label class="field">
+          <span class="field__label">Endereço</span>
+          <input class="field__input" id="imovel-endereco" type="text" placeholder="Ex.: Rua das Flores, 45, apto 201" required minlength="5" autofocus autocomplete="street-address" data-message-length="Informe o endereço completo, com rua e número.">
+        </label>
+        <label class="field">
+          <span class="field__label">Tipo</span>
+          <select class="field__input" id="imovel-tipo" required>
+            <option value="">Selecione</option>
+            <option>Apartamento</option>
+            <option>Casa</option>
+            <option>Sala comercial</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="field__label">Aluguel mensal (R$)</span>
+          <input class="field__input" id="imovel-aluguel" type="text" inputmode="decimal" placeholder="Ex.: 1.500,00" required data-money data-message-min="Informe um aluguel maior que zero.">
+        </label>
+        <label class="field">
+          <span class="field__label">Dia de vencimento</span>
+          <input class="field__input" id="imovel-dia" type="number" inputmode="numeric" min="1" max="28" step="1" placeholder="De 1 a 28" required data-message-min="Escolha um dia entre 1 e 28." data-message-max="Escolha um dia entre 1 e 28." data-message-step="Use um dia inteiro, entre 1 e 28." data-message-bad="Use um dia inteiro, entre 1 e 28.">
+        </label>
+      </div>
+      <div class="modal__footer">
+        <button class="btn-secondary" type="button" data-close>Cancelar</button>
+        <button class="btn-primary" type="submit">Cadastrar imóvel</button>
+      </div>
+    </form>
   </dialog>
 
   <script src="assets/js/sticky-sections.js"></script>

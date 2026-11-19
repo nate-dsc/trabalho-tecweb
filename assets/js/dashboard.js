@@ -1,20 +1,22 @@
 /*
- * Dashboard: busca rápida e cadastro de novo imóvel (demonstração, sem backend).
+ * Dashboard: busca rápida e registro de novo aluguel (demonstração, sem backend).
  */
 (function () {
   'use strict';
 
-  /* ---------- Novo imóvel ---------- */
-  var newForm = document.getElementById('form-novo-imovel');
+  /* ---------- Novo aluguel ---------- */
+  var newForm = document.getElementById('form-novo-aluguel');
   if (newForm) {
     newForm.addEventListener('demo:valid', function (event) {
       event.preventDefault();
-      var address = document.getElementById('imovel-endereco').value.trim();
-      var type = document.getElementById('imovel-tipo').value;
-      var rent = Demo.formatMoney(Demo.parseMoney(document.getElementById('imovel-aluguel').value));
+      var place = document.getElementById('aluguel-imovel').value;
+      var tenant = document.getElementById('aluguel-inquilino').value;
+      var rent = Demo.formatMoney(Demo.parseMoney(document.getElementById('aluguel-valor').value));
+      var start = document.getElementById('aluguel-inicio').value.split('-').reverse().join('/');
+      var day = document.getElementById('aluguel-dia').value;
       newForm.closest('dialog').close();
-      Demo.toast('Imóvel cadastrado: ' + type.toLowerCase() + ' em ' + address + ', aluguel de ' + rent +
-        '. Nesta demonstração ele não fica salvo.');
+      Demo.toast('Aluguel registrado: ' + place + ' para ' + tenant + ', ' + rent + ' por mês, a partir de ' +
+        start + ', vencendo no dia ' + day + '. Nesta demonstração ele não fica salvo.');
     });
   }
 

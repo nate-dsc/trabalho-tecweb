@@ -1,9 +1,25 @@
 /*
- * Imóveis: "Ver detalhes" das contas mensais, com lembrete para contas em atraso (demonstração).
+ * Imóveis: cadastro de novo imóvel e "Ver detalhes" das contas mensais, com lembrete para contas em
+ * atraso (demonstração, sem backend).
  */
 (function () {
   'use strict';
 
+  /* ---------- Novo imóvel ---------- */
+  var newForm = document.getElementById('form-novo-imovel');
+  if (newForm) {
+    newForm.addEventListener('demo:valid', function (event) {
+      event.preventDefault();
+      var address = document.getElementById('imovel-endereco').value.trim();
+      var type = document.getElementById('imovel-tipo').value;
+      var rent = Demo.formatMoney(Demo.parseMoney(document.getElementById('imovel-aluguel').value));
+      newForm.closest('dialog').close();
+      Demo.toast('Imóvel cadastrado: ' + type.toLowerCase() + ' em ' + address + ', aluguel de ' + rent +
+        '. Nesta demonstração ele não fica salvo.');
+    });
+  }
+
+  /* ---------- Contas mensais ---------- */
   // Inquilino responsável por cada apartamento (mesmos dados da página Inquilinos)
   var TENANTS = {
     'Apartamento 1507': { name: 'S.M.H. Yexela', phone: '(85) 99645-2071', due: 10 },
