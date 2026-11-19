@@ -91,66 +91,69 @@
       </header>
 
       <div class="content">
-        <!-- Situação dos aluguéis -->
-        <section class="block">
-          <div class="block__header">
-            <h2 class="block__title">Situação dos aluguéis</h2>
-            <a class="link" href="imoveis.html">Ver todos</a>
-          </div>
-          <div class="card summary">
-            <div class="month">
-              <img src="assets/icons/calendar.svg" alt="" width="16" height="16">
-              Junho de 2026
+        <!-- Situação dos aluguéis e Resumo financeiro: lado a lado em telas largas -->
+        <div class="overview">
+          <!-- Situação dos aluguéis -->
+          <section class="block">
+            <div class="block__header">
+              <h2 class="block__title">Situação dos aluguéis</h2>
+              <a class="link" href="imoveis.html">Ver todos</a>
             </div>
-            <div class="houses">
-              <img src="assets/img/casinha-atrasada.png" alt="Imóvel com aluguel atrasado" width="100" height="100">
-              <img src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pago" width="100" height="100">
-              <img src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pago" width="100" height="100">
-              <img src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pago" width="100" height="100">
-              <img src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pago" width="100" height="100">
-              <img src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pago" width="100" height="100">
-              <img class="is-pending" src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pendente" width="100" height="100">
-              <img class="is-pending" src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pendente" width="100" height="100">
+            <div class="card summary">
+              <div class="month">
+                <img src="assets/icons/calendar.svg" alt="" width="16" height="16">
+                Junho de 2026
+              </div>
+              <div class="houses">
+                <img src="assets/img/casinha-atrasada.png" alt="Imóvel com aluguel atrasado" width="100" height="100">
+                <img src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pago" width="100" height="100">
+                <img src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pago" width="100" height="100">
+                <img src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pago" width="100" height="100">
+                <img src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pago" width="100" height="100">
+                <img src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pago" width="100" height="100">
+                <img class="is-pending" src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pendente" width="100" height="100">
+                <img class="is-pending" src="assets/img/casinha-ok.png" alt="Imóvel com aluguel pendente" width="100" height="100">
+              </div>
+              <p class="status">
+                8 imóveis · <span class="text-red">1 atrasado</span> · <span class="text-green">5 pagos</span> · <span class="text-amber">2 pendentes</span>
+              </p>
             </div>
-            <p class="status">
-              8 imóveis · <span class="text-red">1 atrasado</span> · <span class="text-green">5 pagos</span> · <span class="text-amber">2 pendentes</span>
-            </p>
-          </div>
-        </section>
+          </section>
 
-        <!-- Financeiro -->
-        <section class="block">
-          <div class="block__header">
-            <h2 class="block__title">Resumo financeiro</h2>
-            <a class="link" href="financeiro.html">Ver todos</a>
-          </div>
-          <div class="card finance">
-            <div class="month">
-              <img src="assets/icons/calendar.svg" alt="" width="16" height="16">
-              Junho de 2026
+          <!-- Financeiro -->
+          <section class="block">
+            <div class="block__header">
+              <h2 class="block__title">Resumo financeiro</h2>
+              <a class="link" href="financeiro.html">Ver todos</a>
             </div>
-            <div class="finance__boxes">
-              <div class="finance__box finance__box--in">
-                <span class="finance__label">Receitas</span>
-                <span class="finance__value text-green">R$ 20.048,95</span>
+            <div class="card finance">
+              <div class="month">
+                <img src="assets/icons/calendar.svg" alt="" width="16" height="16">
+                Junho de 2026
               </div>
-              <div class="finance__box finance__box--out">
-                <span class="finance__label">Despesas</span>
-                <span class="finance__value text-red">R$ 6.767,67</span>
+              <div class="finance__boxes">
+                <div class="finance__box finance__box--in">
+                  <span class="finance__label">Receitas</span>
+                  <span class="finance__value text-green">R$ 20.048,95</span>
+                </div>
+                <div class="finance__box finance__box--out">
+                  <span class="finance__label">Despesas</span>
+                  <span class="finance__value text-red">R$ 6.767,67</span>
+                </div>
               </div>
+              <div class="balance">
+                <span class="balance__label">Saldo do mês</span>
+                <span class="balance__value text-green">R$ 13.281,28</span>
+              </div>
+              <hr class="separator">
+              <ul class="highlights">
+                <li><img src="assets/icons/ellipse.svg" alt="" width="6" height="6">1 aluguel atrasado</li>
+                <li><img src="assets/icons/ellipse.svg" alt="" width="6" height="6">Receita 25,67% maior comparada ao mês anterior</li>
+                <li><img src="assets/icons/ellipse.svg" alt="" width="6" height="6">2 aluguéis pendentes</li>
+              </ul>
             </div>
-            <div class="balance">
-              <span class="balance__label">Saldo do mês</span>
-              <span class="balance__value text-green">R$ 13.281,28</span>
-            </div>
-            <hr class="separator">
-            <ul class="highlights">
-              <li><img src="assets/icons/ellipse.svg" alt="" width="6" height="6">1 aluguel atrasado</li>
-              <li><img src="assets/icons/ellipse.svg" alt="" width="6" height="6">Receita 25,67% maior comparada ao mês anterior</li>
-              <li><img src="assets/icons/ellipse.svg" alt="" width="6" height="6">2 aluguéis pendentes</li>
-            </ul>
-          </div>
-        </section>
+          </section>
+        </div>
 
         <!-- Documentos recentes -->
         <section class="block">

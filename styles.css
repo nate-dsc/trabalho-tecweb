@@ -372,6 +372,32 @@ a { color: inherit; text-decoration: none; }
   white-space: nowrap;
 }
 
+/*
+ * Situação dos aluguéis + Resumo financeiro: um embaixo do outro; em telas largas, lado a lado
+ * com a mesma altura (casinhas em 2 fileiras de 4). A partir de 1030px de área útil cabem os 4 × 100px.
+ */
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@container main (width > 1030px) {
+  .overview {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .overview .card { flex: 1 1 auto; }
+  .overview .houses {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    justify-content: center;
+    margin-block: auto;
+  }
+}
+
 /* Situação dos aluguéis */
 .houses {
   display: flex;
